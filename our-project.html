@@ -1,0 +1,989 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Our Projects - Emayaa Luxury Homes</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #f5f4f1;
+        --green: #20372c;
+        --light-green: #46584f;
+        --text: #686868;
+        --white: #ffffff;
+        --border: #d9ddd8;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--bg);
+        font-family: "Inter", sans-serif;
+        color: var(--green);
+        overflow-x: hidden;
+      }
+
+      /* ========================================
+GLOBAL
+======================================== */
+
+      section {
+        padding: 120px 7%;
+      }
+
+      img {
+        width: 100%;
+        display: block;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+      }
+
+      /* ========================================
+HEADER
+======================================== */
+
+      .emh-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 16px 40px;
+        background: linear-gradient(90deg, #183124 0%, #10281d 100%);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 99999;
+      }
+
+      .emh-logo img {
+        width: 260px;
+      }
+
+      /* MENU BUTTON */
+
+      .emh-menu-btn {
+        width: 46px;
+        height: 46px;
+        border: none;
+        border-radius: 50%;
+        background: #ece2d7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+      }
+
+      .emh-menu-btn span {
+        width: 18px;
+        height: 2px;
+        background: #173122;
+      }
+
+      /* ========================================
+FULLSCREEN MENU
+======================================== */
+
+      .emh-mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(180deg, #183124 0%, #10281d 100%);
+        z-index: 999999;
+        transition: 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+        padding: 40px 30px;
+      }
+
+      .emh-mobile-menu.active {
+        right: 0;
+      }
+
+      .emh-close {
+        width: 46px;
+        height: 46px;
+        border: none;
+        border-radius: 50%;
+        background: #ece2d7;
+        margin-left: auto;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .emh-close::before,
+      .emh-close::after {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 2px;
+        background: #173122;
+        left: 14px;
+        top: 22px;
+      }
+
+      .emh-close::before {
+        transform: rotate(45deg);
+      }
+
+      .emh-close::after {
+        transform: rotate(-45deg);
+      }
+
+      .emh-menu-links {
+        margin-top: 120px;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .emh-menu-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 58px;
+        font-family: "Cormorant Garamond", serif;
+        transition: 0.3s ease;
+      }
+
+      .emh-menu-links a:hover {
+        color: #d9c0ad;
+        transform: translateX(10px);
+      }
+
+      /* ========================================
+PAGE HERO
+======================================== */
+
+      .projects-hero {
+        padding-top: 140px;
+        padding-bottom: 40px;
+      }
+
+      .hero-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 50px;
+        margin-bottom: 80px;
+      }
+
+      .hero-title h1 {
+        font-size: 88px;
+        line-height: 0.9;
+        margin-bottom: 25px;
+      }
+
+      .hero-title p {
+        max-width: 620px;
+        line-height: 2;
+        color: var(--text);
+      }
+
+      .hero-line {
+        width: 180px;
+        height: 1px;
+        background: var(--border);
+      }
+
+      /* ========================================
+PROJECT LIST
+======================================== */
+
+      .projects-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 170px;
+      }
+
+      .project-card {
+        display: grid;
+        grid-template-columns: 0.95fr 1.1fr;
+        gap: 90px;
+        align-items: center;
+        position: relative;
+      }
+
+      .project-card.reverse {
+        direction: rtl;
+      }
+
+      .project-card.reverse .project-content {
+        direction: ltr;
+      }
+
+      /* ========================================
+CONTENT
+======================================== */
+
+      .project-tag {
+        display: inline-block;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: #7f8a84;
+        margin-bottom: 20px;
+      }
+
+      .project-content h2 {
+        font-size: 64px;
+        line-height: 0.95;
+        margin-bottom: 25px;
+      }
+
+      .project-subtitle {
+        font-size: 18px;
+        color: #58665f;
+        margin-bottom: 30px;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .project-details {
+        margin-bottom: 35px;
+      }
+
+      .project-details p {
+        color: var(--text);
+        line-height: 2;
+        margin-bottom: 12px;
+        font-size: 15px;
+      }
+
+      .project-description {
+        margin-bottom: 35px;
+      }
+
+      .project-description p {
+        color: var(--text);
+        line-height: 2.1;
+        font-size: 16px;
+      }
+
+      .project-features {
+        list-style: none;
+        margin-bottom: 40px;
+      }
+
+      .project-features li {
+        margin-bottom: 14px;
+        color: #58665f;
+        position: relative;
+        padding-left: 24px;
+        line-height: 1.8;
+      }
+
+      .project-features li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--green);
+        font-size: 18px;
+      }
+
+      .project-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        padding: 18px 34px;
+        border: 1px solid var(--green);
+        color: var(--green);
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+        transition: 0.4s ease;
+        letter-spacing: 1px;
+      }
+
+      .project-btn span {
+        position: relative;
+        z-index: 2;
+      }
+
+      .project-btn::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--green);
+        transform: translateX(-100%);
+        transition: 0.5s ease;
+      }
+
+      .project-btn:hover::before {
+        transform: translateX(0);
+      }
+
+      .project-btn:hover {
+        color: white;
+      }
+
+      /* ========================================
+IMAGE
+======================================== */
+
+      .project-image {
+        position: relative;
+        overflow: hidden;
+        height: 820px;
+        cursor: pointer;
+      }
+
+      .project-image::before {
+        content: "";
+        position: absolute;
+        top: -150%;
+        left: -40%;
+        width: 60%;
+        height: 400%;
+        background: rgba(255, 255, 255, 0.18);
+        transform: rotate(25deg);
+        transition: 1.3s;
+        z-index: 3;
+      }
+
+      .project-card:hover .project-image::before {
+        left: 130%;
+      }
+
+      .project-image img {
+        height: 100%;
+        object-fit: cover;
+        transition: 1.2s ease;
+      }
+
+      .project-card:hover .project-image img {
+        transform: scale(1.08);
+      }
+
+      .project-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.25), transparent);
+        z-index: 1;
+      }
+
+      .image-label {
+        position: absolute;
+        left: 30px;
+        bottom: 30px;
+        z-index: 4;
+        backdrop-filter: blur(12px);
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: white;
+        padding: 14px 24px;
+        font-size: 13px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      /* ========================================
+FLOATING ELEMENT
+======================================== */
+
+      .floating-circle {
+        position: absolute;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        border: 1px solid rgba(32, 55, 44, 0.08);
+        top: -80px;
+        right: -80px;
+        z-index: -1;
+      }
+
+      /* ========================================
+REVEAL ANIMATION
+======================================== */
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(100px);
+        transition: 1.2s cubic-bezier(0.17, 0.67, 0.31, 1);
+      }
+
+      .reveal-left {
+        opacity: 0;
+        transform: translateX(-120px);
+        transition: 1.2s cubic-bezier(0.17, 0.67, 0.31, 1);
+      }
+
+      .reveal-right {
+        opacity: 0;
+        transform: translateX(120px);
+        transition: 1.2s cubic-bezier(0.17, 0.67, 0.31, 1);
+      }
+
+      .reveal.active,
+      .reveal-left.active,
+      .reveal-right.active {
+        opacity: 1;
+        transform: translate(0);
+      }
+
+      /* ========================================
+PARALLAX BG
+======================================== */
+
+      .parallax-bg {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        overflow: hidden;
+      }
+
+      .parallax-bg::before {
+        content: "";
+        position: absolute;
+        width: 900px;
+        height: 900px;
+        border-radius: 50%;
+        background: radial-gradient(rgba(32, 55, 44, 0.04), transparent 70%);
+        top: 0;
+        right: -300px;
+      }
+
+      /* ========================================
+FOOTER
+======================================== */
+
+      .emf-footer {
+        background: linear-gradient(90deg, #183124 0%, #10281d 100%);
+        padding: 70px 7%;
+        margin-top: 100px;
+      }
+
+      .emf-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr;
+        gap: 70px;
+      }
+
+      .emf-logo img {
+        width: 240px;
+        margin-bottom: 24px;
+      }
+
+      .emf-desc {
+        color: white;
+        line-height: 2;
+        max-width: 340px;
+      }
+
+      .emf-title {
+        color: #c7c7c7;
+        margin-bottom: 20px;
+        font-weight: 400;
+        font-size: 18px;
+      }
+
+      .emf-links {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .emf-links a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .emf-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        color: white;
+        line-height: 1.8;
+      }
+
+      /* ========================================
+RESPONSIVE
+======================================== */
+
+      @media (max-width: 1200px) {
+        .hero-title h1 {
+          font-size: 72px;
+        }
+
+        .project-content h2 {
+          font-size: 54px;
+        }
+
+        .project-image {
+          height: 680px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .project-card,
+        .project-card.reverse {
+          grid-template-columns: 1fr;
+          direction: ltr;
+          gap: 55px;
+        }
+
+        .project-image {
+          height: 620px;
+        }
+
+        .hero-top {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .emf-grid {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        section {
+          padding: 90px 5%;
+        }
+
+        .emh-header {
+          padding: 14px 18px;
+        }
+
+        .emh-logo img {
+          width: 190px;
+        }
+
+        .hero-title h1 {
+          font-size: 54px;
+        }
+
+        .project-content h2 {
+          font-size: 42px;
+        }
+
+        .project-image {
+          height: 480px;
+        }
+
+        .projects-wrapper {
+          gap: 110px;
+        }
+
+        .emh-menu-links {
+          margin-top: 90px;
+        }
+
+        .emh-menu-links a {
+          font-size: 36px;
+        }
+
+        .emf-footer {
+          padding: 50px 22px;
+        }
+
+        .emf-logo img {
+          width: 190px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-title h1 {
+          font-size: 42px;
+        }
+
+        .project-content h2 {
+          font-size: 34px;
+        }
+
+        .project-image {
+          height: 380px;
+        }
+
+        .project-btn {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="parallax-bg"></div>
+
+    <!-- ========================================
+HEADER
+======================================== -->
+
+    <header class="emh-header">
+      <a href="./home.html" class="emh-logo">
+        <img src="./xm xlms.png" alt="Emayaa Luxury Homes" />
+      </a>
+
+      <button class="emh-menu-btn" id="emhOpenMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <!-- ========================================
+MOBILE MENU
+======================================== -->
+
+    <div class="emh-mobile-menu" id="emhMobileMenu">
+      <button class="emh-close" id="emhCloseMenu"></button>
+
+      <div class="emh-menu-links">
+        <a href="./home.html">Home</a>
+        <a href="./brand-story.html">Our Brand Story</a>
+        <a href="./our-project.html">Our Projects</a>
+        <a href="./teams.html">Meet The Team</a>
+        <a href="./contact.html">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- ========================================
+HERO
+======================================== -->
+
+    <section class="projects-hero">
+      <div class="hero-top reveal">
+        <div class="hero-title">
+          <h1>
+            Our<br />
+            Projects
+          </h1>
+
+          <p>
+            Curated luxury residences crafted with timeless architecture,
+            emotional design language, and elevated living experiences.
+          </p>
+        </div>
+
+        <div class="hero-line"></div>
+      </div>
+    </section>
+
+    <!-- ========================================
+PROJECTS
+======================================== -->
+
+    <section class="projects-section">
+      <div class="projects-wrapper">
+        <!-- PROJECT 1 -->
+
+        <div class="project-card">
+          <div class="project-content reveal-left">
+            <span class="project-tag"> Signature Villa </span>
+
+            <h2>
+              The Creek by<br />
+              Emayaa Homes
+            </h2>
+
+            <div class="project-subtitle">Mediterranean Luxury Residence</div>
+
+            <div class="project-details">
+              <p><strong>Location:</strong> Moira, Goa</p>
+              <p><strong>Plot Size:</strong> 380–430 sq mtr</p>
+              <p><strong>Built Area:</strong> 3500–4800 sq ft</p>
+              <p>
+                <strong>Features:</strong> 4 Bedrooms | Security | Private Pool
+              </p>
+            </div>
+
+            <div class="project-description">
+              <p>
+                Spanning over 3,600 square meters, The Creek is a masterpiece of
+                tropical luxury.
+              </p>
+            </div>
+
+            <ul class="project-features">
+              <li>Private landscaped gardens</li>
+              <li>Luxury infinity pool</li>
+              <li>Double-height living spaces</li>
+              <li>Premium imported finishes</li>
+            </ul>
+
+            <a href="#" class="project-btn">
+              <span>Explore Project</span>
+            </a>
+          </div>
+
+          <div class="project-image reveal-right">
+            <img
+              src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1600&auto=format&fit=crop"
+              alt=""
+            />
+
+            <div class="image-label">Goa Luxury Villa</div>
+          </div>
+        </div>
+
+        <!-- PROJECT 2 -->
+
+        <div class="project-card reverse">
+          <div class="project-content reveal-right">
+            <span class="project-tag"> Tropical Sanctuary </span>
+
+            <h2>
+              Villa<br />
+              Poesia
+            </h2>
+
+            <div class="project-subtitle">Mansion Art Home</div>
+
+            <div class="project-details">
+              <p><strong>Location:</strong> Moira, Goa</p>
+              <p><strong>Plot Size:</strong> 1350 sq mtr</p>
+              <p><strong>Built Area:</strong> 6390 sq ft</p>
+              <p><strong>Features:</strong> 5 Bedrooms | Infinity Pool</p>
+            </div>
+
+            <div class="project-description">
+              <p>
+                Villa Poesia blends poetic architecture with serene tropical
+                living.
+              </p>
+            </div>
+
+            <ul class="project-features">
+              <li>Resort-inspired pool deck</li>
+              <li>Open-air courtyard design</li>
+              <li>Luxury tropical landscaping</li>
+              <li>Immersive indoor-outdoor spaces</li>
+            </ul>
+
+            <a href="#" class="project-btn">
+              <span>Explore Project</span>
+            </a>
+          </div>
+
+          <div class="project-image reveal-left">
+            <img
+              src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=1600&auto=format&fit=crop"
+              alt=""
+            />
+
+            <div class="image-label">Tropical Residence</div>
+          </div>
+        </div>
+
+        <!-- PROJECT 3 -->
+
+        <div class="project-card">
+          <div class="project-content reveal-left">
+            <span class="project-tag"> Mountain Retreat </span>
+
+            <h2>
+              Art<br />
+              Home
+            </h2>
+
+            <div class="project-subtitle">Premium High-Rise Apartments</div>
+
+            <div class="project-details">
+              <p><strong>Location:</strong> Kasauli, Himachal Pradesh</p>
+              <p><strong>Type:</strong> Luxury Residences</p>
+            </div>
+
+            <div class="project-description">
+              <p>
+                A sanctuary overlooking the mountains, designed around slow
+                living and panoramic experiences.
+              </p>
+            </div>
+
+            <ul class="project-features">
+              <li>Floor-to-ceiling mountain views</li>
+              <li>Infinity-edge swimming pool</li>
+              <li>Wellness & clubhouse spaces</li>
+              <li>High appreciation location</li>
+            </ul>
+
+            <a href="#" class="project-btn">
+              <span>Explore Project</span>
+            </a>
+          </div>
+
+          <div class="project-image reveal-right">
+            <img
+              src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1600&auto=format&fit=crop"
+              alt=""
+            />
+
+            <div class="image-label">Mountain Luxury</div>
+          </div>
+        </div>
+
+        <!-- PROJECT 4 -->
+
+        <div class="project-card reverse">
+          <div class="project-content reveal-right">
+            <span class="project-tag"> Urban Elegance </span>
+
+            <h2>
+              Premium<br />
+              Apartments
+            </h2>
+
+            <div class="project-subtitle">Modern High-Rise Living</div>
+
+            <div class="project-details">
+              <p><strong>Location:</strong> Arpora, Goa</p>
+              <p><strong>Type:</strong> Premium Luxury Apartments</p>
+            </div>
+
+            <div class="project-description">
+              <p>
+                Designed for sophisticated urban lifestyles, these residences
+                combine world-class amenities.
+              </p>
+            </div>
+
+            <ul class="project-features">
+              <li>Luxury concierge services</li>
+              <li>Double-height lobby spaces</li>
+              <li>Premium clubhouse experience</li>
+              <li>Modern smart-home systems</li>
+            </ul>
+
+            <a href="#" class="project-btn">
+              <span>Explore Project</span>
+            </a>
+          </div>
+
+          <div class="project-image reveal-left">
+            <img
+              src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=1600&auto=format&fit=crop"
+              alt=""
+            />
+
+            <div class="image-label">Urban Luxury</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+FOOTER
+======================================== -->
+
+    <footer class="emf-footer">
+      <div class="emf-grid">
+        <div>
+          <div class="emf-logo">
+            <img src="./xm xlms.png" alt="Emayaa Luxury Homes" />
+          </div>
+
+          <p class="emf-desc">
+            Emayaa Luxury Homes is dedicated to crafting refined living spaces
+            that blend elegance, comfort, and thoughtful design.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="emf-title">Quick Links</h3>
+
+          <div class="emf-links">
+            <a href="./home.html">Home</a>
+            <a href="./brand-story.html">Our Brand Story</a>
+            <a href="./our-project.html">Our Projects</a>
+            <a href="./teams.html">Meet The Team</a>
+            <a href="./contact.html">Contact Us</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="emf-title">Contact Us</h3>
+
+          <div class="emf-contact">
+            <div>+91-9318988776</div>
+
+            <div>info@emayaaluxuryhomes.com</div>
+
+            <div>
+              F -6/5, Vasant Vihar<br />
+              New Delhi - 110057
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      /* ========================================
+MENU
+======================================== */
+
+      const emhMenu = document.getElementById("emhMobileMenu");
+
+      const emhOpen = document.getElementById("emhOpenMenu");
+
+      const emhClose = document.getElementById("emhCloseMenu");
+
+      emhOpen.addEventListener("click", () => {
+        emhMenu.classList.add("active");
+      });
+
+      emhClose.addEventListener("click", () => {
+        emhMenu.classList.remove("active");
+      });
+
+      /* ========================================
+SCROLL REVEAL
+======================================== */
+
+      const reveals = document.querySelectorAll(
+        ".reveal, .reveal-left, .reveal-right",
+      );
+
+      window.addEventListener("scroll", () => {
+        reveals.forEach((el) => {
+          const windowHeight = window.innerHeight;
+          const revealTop = el.getBoundingClientRect().top;
+          const revealPoint = 120;
+
+          if (revealTop < windowHeight - revealPoint) {
+            el.classList.add("active");
+          }
+        });
+      });
+
+      /* ========================================
+PARALLAX IMAGE EFFECT
+======================================== */
+
+      window.addEventListener("scroll", () => {
+        const images = document.querySelectorAll(".project-image img");
+
+        images.forEach((img) => {
+          const speed = 0.04;
+          const yPos = window.scrollY * speed;
+
+          img.style.transform = `translateY(${yPos}px) scale(1.05)`;
+        });
+      });
+    </script>
+  </body>
+</html>

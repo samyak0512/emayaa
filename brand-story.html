@@ -1,0 +1,1091 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Brand Story - Emayaa Luxury Homes</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #f5f4f1;
+        --green: #1f352b;
+        --light-green: #40564b;
+        --text: #676767;
+        --white: #ffffff;
+        --border: #dcdcd7;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--green);
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+      }
+
+      /* ========================================
+GLOBAL
+======================================== */
+
+      section {
+        padding: 120px 7%;
+      }
+
+      img {
+        width: 100%;
+        display: block;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+      }
+
+      .section-tag {
+        display: inline-block;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-size: 12px;
+        color: #7f8c84;
+        margin-bottom: 18px;
+      }
+
+      .section-title {
+        font-size: 74px;
+        line-height: 0.95;
+        margin-bottom: 30px;
+      }
+
+      .section-description {
+        max-width: 760px;
+        color: var(--text);
+        line-height: 2;
+        font-size: 17px;
+      }
+
+      /* ========================================
+HEADER
+======================================== */
+
+      .emh-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 16px 40px;
+        background: linear-gradient(90deg, #183124 0%, #10281d 100%);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 99999;
+      }
+
+      .emh-logo img {
+        width: 260px;
+      }
+
+      /* MENU BUTTON */
+
+      .emh-menu-btn {
+        width: 46px;
+        height: 46px;
+        border: none;
+        border-radius: 50%;
+        background: #ece2d7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+      }
+
+      .emh-menu-btn span {
+        width: 18px;
+        height: 2px;
+        background: #173122;
+      }
+
+      /* ========================================
+FULLSCREEN MENU
+======================================== */
+
+      .emh-mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(180deg, #183124 0%, #10281d 100%);
+        z-index: 999999;
+        transition: 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+        padding: 40px 30px;
+      }
+
+      .emh-mobile-menu.active {
+        right: 0;
+      }
+
+      .emh-close {
+        width: 46px;
+        height: 46px;
+        border: none;
+        border-radius: 50%;
+        background: #ece2d7;
+        margin-left: auto;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .emh-close::before,
+      .emh-close::after {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 2px;
+        background: #173122;
+        left: 14px;
+        top: 22px;
+      }
+
+      .emh-close::before {
+        transform: rotate(45deg);
+      }
+
+      .emh-close::after {
+        transform: rotate(-45deg);
+      }
+
+      .emh-menu-links {
+        margin-top: 120px;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .emh-menu-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 58px;
+        font-family: "Cormorant Garamond", serif;
+        transition: 0.3s ease;
+      }
+
+      .emh-menu-links a:hover {
+        color: #d9c0ad;
+        transform: translateX(10px);
+      }
+
+      /* ========================================
+HERO
+======================================== */
+
+      .brand-hero {
+        padding-top: 78px;
+      }
+
+      .hero-container {
+        position: relative;
+        height: 92vh;
+        min-height: 760px;
+        overflow: hidden;
+      }
+
+      .hero-container img {
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.06);
+        animation: heroZoom 12s ease forwards;
+      }
+
+      @keyframes heroZoom {
+        to {
+          transform: scale(1);
+        }
+      }
+
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.25),
+          rgba(0, 0, 0, 0.45)
+        );
+      }
+
+      .hero-content {
+        position: absolute;
+        left: 8%;
+        bottom: 10%;
+        max-width: 760px;
+        z-index: 2;
+      }
+
+      .hero-content span {
+        color: white;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-size: 13px;
+      }
+
+      .hero-content h1 {
+        color: white;
+        font-size: 110px;
+        line-height: 0.9;
+        margin: 18px 0 30px;
+        opacity: 0;
+        transform: translateY(40px);
+        animation: fadeUp 1s ease forwards;
+      }
+
+      .hero-content p {
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.9;
+        max-width: 640px;
+        font-size: 18px;
+        opacity: 0;
+        transform: translateY(40px);
+        animation: fadeUp 1s ease 0.3s forwards;
+      }
+
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ========================================
+INTRO STORY
+======================================== */
+
+      .story-intro {
+        text-align: center;
+      }
+
+      .story-intro .section-description {
+        margin: auto;
+      }
+
+      /* ========================================
+TIMELINE
+======================================== */
+
+      .timeline {
+        position: relative;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background: var(--border);
+        transform: translateX(-50%);
+      }
+
+      .timeline-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 90px;
+        align-items: center;
+        margin-bottom: 140px;
+        position: relative;
+      }
+
+      .timeline-row:nth-child(even) {
+        direction: rtl;
+      }
+
+      .timeline-row:nth-child(even) .timeline-content {
+        direction: ltr;
+      }
+
+      .timeline-image {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .timeline-image img {
+        height: 700px;
+        object-fit: cover;
+        transition: 1.2s ease;
+      }
+
+      .timeline-image:hover img {
+        transform: scale(1.08);
+      }
+
+      .timeline-content {
+        position: relative;
+      }
+
+      .timeline-year {
+        font-size: 16px;
+        letter-spacing: 3px;
+        color: #89958f;
+        margin-bottom: 18px;
+      }
+
+      .timeline-content h2 {
+        font-size: 58px;
+        margin-bottom: 25px;
+      }
+
+      .timeline-content p {
+        color: var(--text);
+        line-height: 2;
+        margin-bottom: 28px;
+      }
+
+      .timeline-dot {
+        position: absolute;
+        top: 40px;
+        left: 50%;
+        width: 22px;
+        height: 22px;
+        background: var(--green);
+        border-radius: 50%;
+        transform: translateX(-50%);
+        z-index: 5;
+        box-shadow: 0 0 0 12px rgba(31, 53, 43, 0.08);
+      }
+
+      /* ========================================
+VALUES SECTION
+======================================== */
+
+      .values {
+        background: #eef1ed;
+        margin: 0;
+      }
+
+      .values-top {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+
+      .value-card {
+        background: white;
+        padding: 50px;
+        transition: 0.5s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .value-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--green);
+        transform: scaleX(0);
+        transition: 0.5s ease;
+        transform-origin: left;
+      }
+
+      .value-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .value-card:hover {
+        transform: translateY(-12px);
+      }
+
+      .value-card h3 {
+        font-size: 38px;
+        margin-bottom: 18px;
+      }
+
+      .value-card p {
+        color: var(--text);
+        line-height: 1.9;
+      }
+
+      /* ========================================
+QUOTE SECTION
+======================================== */
+
+      .quote-section {
+        text-align: center;
+      }
+
+      .quote-box {
+        max-width: 1000px;
+        margin: auto;
+      }
+
+      .quote-box h2 {
+        font-size: 82px;
+        line-height: 1;
+        margin-bottom: 35px;
+      }
+
+      .quote-box p {
+        font-size: 20px;
+        color: #6a6a6a;
+        line-height: 2;
+        max-width: 760px;
+        margin: auto;
+      }
+
+      /* ========================================
+CTA
+======================================== */
+
+      .brand-cta {
+        padding: 110px 0 0;
+      }
+
+      .cta-banner {
+        position: relative;
+        overflow: hidden;
+        height: 700px;
+      }
+
+      .cta-banner img {
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .cta-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+      }
+
+      .cta-content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 30px;
+      }
+
+      .cta-content h2 {
+        color: white;
+        font-size: 74px;
+        margin-bottom: 25px;
+      }
+
+      .cta-content p {
+        color: rgba(255, 255, 255, 0.9);
+        max-width: 760px;
+        line-height: 2;
+        margin-bottom: 35px;
+      }
+
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px 38px;
+        border: 1px solid white;
+        color: white;
+        text-decoration: none;
+        transition: 0.4s ease;
+        letter-spacing: 1px;
+      }
+
+      .cta-btn:hover {
+        background: white;
+        color: var(--green);
+      }
+
+      /* ========================================
+REVEAL ANIMATION
+======================================== */
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(80px);
+        transition: 1s cubic-bezier(0.17, 0.67, 0.31, 1);
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ========================================
+FOOTER
+======================================== */
+
+      .emf-footer {
+        background: linear-gradient(90deg, #183124 0%, #10281d 100%);
+        padding: 70px 7%;
+      }
+
+      .emf-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr;
+        gap: 70px;
+      }
+
+      .emf-logo img {
+        width: 240px;
+        margin-bottom: 24px;
+      }
+
+      .emf-desc {
+        color: white;
+        line-height: 2;
+        max-width: 340px;
+      }
+
+      .emf-title {
+        color: #c7c7c7;
+        margin-bottom: 20px;
+        font-weight: 400;
+        font-size: 18px;
+      }
+
+      .emf-links {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .emf-links a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .emf-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        color: white;
+        line-height: 1.8;
+      }
+
+      /* ========================================
+RESPONSIVE
+======================================== */
+
+      @media (max-width: 1200px) {
+        .hero-content h1 {
+          font-size: 88px;
+        }
+
+        .section-title {
+          font-size: 60px;
+        }
+
+        .timeline-content h2 {
+          font-size: 48px;
+        }
+
+        .quote-box h2 {
+          font-size: 62px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .timeline::before {
+          display: none;
+        }
+
+        .timeline-row,
+        .timeline-row:nth-child(even) {
+          grid-template-columns: 1fr;
+          direction: ltr;
+          gap: 50px;
+        }
+
+        .timeline-dot {
+          display: none;
+        }
+
+        .values-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .timeline-image img {
+          height: 560px;
+        }
+
+        .emf-grid {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        section {
+          padding: 90px 5%;
+        }
+
+        .emh-header {
+          padding: 14px 18px;
+        }
+
+        .emh-logo img {
+          width: 190px;
+        }
+
+        .hero-container {
+          height: 82vh;
+          min-height: 620px;
+        }
+
+        .hero-content {
+          left: 30px;
+          right: 30px;
+        }
+
+        .hero-content h1 {
+          font-size: 58px;
+        }
+
+        .section-title {
+          font-size: 44px;
+        }
+
+        .timeline-content h2 {
+          font-size: 38px;
+        }
+
+        .quote-box h2 {
+          font-size: 44px;
+        }
+
+        .cta-content h2 {
+          font-size: 48px;
+        }
+
+        .timeline-image img {
+          height: 420px;
+        }
+
+        .emh-menu-links {
+          margin-top: 90px;
+        }
+
+        .emh-menu-links a {
+          font-size: 36px;
+        }
+
+        .emf-footer {
+          padding: 50px 22px;
+        }
+
+        .emf-logo img {
+          width: 190px;
+        }
+
+        .cta-banner {
+          height: 520px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-content h1 {
+          font-size: 46px;
+        }
+
+        .section-title {
+          font-size: 38px;
+        }
+
+        .timeline-content h2 {
+          font-size: 32px;
+        }
+
+        .value-card {
+          padding: 38px 28px;
+        }
+
+        .quote-box h2 {
+          font-size: 36px;
+        }
+
+        .cta-content h2 {
+          font-size: 36px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ========================================
+HEADER
+======================================== -->
+
+    <header class="emh-header">
+      <a href="./home.html" class="emh-logo">
+        <img src="./xm xlms.png" alt="Emayaa Luxury Homes" />
+      </a>
+
+      <button class="emh-menu-btn" id="emhOpenMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <!-- ========================================
+MOBILE MENU
+======================================== -->
+
+    <div class="emh-mobile-menu" id="emhMobileMenu">
+      <button class="emh-close" id="emhCloseMenu"></button>
+
+      <div class="emh-menu-links">
+        <a href="./home.html">Home</a>
+        <a href="./brand-story.html">Our Brand Story</a>
+        <a href="./our-project.html">Our Projects</a>
+        <a href="./teams.html">Meet The Team</a>
+        <a href="./contact.html">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- ========================================
+HERO
+======================================== -->
+
+    <section class="brand-hero">
+      <div class="hero-container">
+        <img
+          src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=2000&auto=format&fit=crop"
+          alt="Luxury Home"
+        />
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+          <span>Emayaa Luxury Homes</span>
+
+          <h1>
+            The Story<br />
+            of Emayaa
+          </h1>
+
+          <p>
+            A journey shaped by heritage, trust, timeless architecture, and the
+            pursuit of elevated living experiences.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+INTRO
+======================================== -->
+
+    <section class="story-intro reveal">
+      <span class="section-tag">Our Foundation</span>
+
+      <h2 class="section-title">Where Legacy Meets Vision</h2>
+
+      <p class="section-description">
+        Emayaa was born from a belief that homes should transcend architecture.
+        They should become emotional spaces that preserve memories, inspire
+        lifestyles, and reflect enduring elegance.
+        <br /><br />
+        Built on decades of expertise in luxury real estate and refined by a
+        passion for thoughtful design, Emayaa creates residences that blend
+        timeless craftsmanship with modern sophistication.
+      </p>
+    </section>
+
+    <!-- ========================================
+TIMELINE
+======================================== -->
+
+    <section class="timeline">
+      <div class="timeline-row reveal">
+        <div class="timeline-image">
+          <img
+            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1400&auto=format&fit=crop"
+          />
+        </div>
+
+        <div class="timeline-content">
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-year">THE BEGINNING</div>
+
+          <h2>A Vision Rooted in Trust</h2>
+
+          <p>
+            Emayaa began with a simple but powerful philosophy — luxury should
+            never compromise authenticity.
+          </p>
+
+          <p>
+            Guided by decades of financial and operational expertise, the
+            foundation of Emayaa was built on integrity and long-term vision.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-row reveal">
+        <div class="timeline-image">
+          <img
+            src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=1400&auto=format&fit=crop"
+          />
+        </div>
+
+        <div class="timeline-content">
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-year">THE EVOLUTION</div>
+
+          <h2>Crafting Spaces with Soul</h2>
+
+          <p>
+            As Emayaa evolved, architecture became more than construction — it
+            became storytelling.
+          </p>
+
+          <p>
+            Inspired by Mediterranean elegance, tropical serenity, and modern
+            minimalism.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-row reveal">
+        <div class="timeline-image">
+          <img
+            src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?q=80&w=1400&auto=format&fit=crop"
+          />
+        </div>
+
+        <div class="timeline-content">
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-year">TODAY</div>
+
+          <h2>Defining Modern Luxury Living</h2>
+
+          <p>
+            Today, Emayaa stands as a symbol of elevated living — delivering
+            residences that merge architecture, emotion, and investment
+            excellence.
+          </p>
+
+          <p>
+            From luxury villas to curated private retreats, Emayaa continues to
+            redefine modern luxury.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+VALUES
+======================================== -->
+
+    <section class="values reveal">
+      <div class="values-top">
+        <span class="section-tag">Core Philosophy</span>
+
+        <h2 class="section-title">The Values We Build With</h2>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <h3>Integrity</h3>
+
+          <p>
+            Every decision, partnership, and project is guided by transparency,
+            trust, and long-term commitment.
+          </p>
+        </div>
+
+        <div class="value-card">
+          <h3>Craftsmanship</h3>
+
+          <p>
+            We obsess over details — from architecture and materials to spatial
+            emotion and luxury finishes.
+          </p>
+        </div>
+
+        <div class="value-card">
+          <h3>Timeless Living</h3>
+
+          <p>
+            Emayaa residences are designed to remain elegant across generations,
+            blending heritage with contemporary refinement.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+QUOTE
+======================================== -->
+
+    <section class="quote-section reveal">
+      <div class="quote-box">
+        <h2>
+          “Luxury is not excess.<br />
+          It is timeless intention.”
+        </h2>
+
+        <p>
+          At Emayaa, we believe true luxury lies in spaces that inspire calm,
+          preserve memories, and elevate the everyday experience of living.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================================
+CTA
+======================================== -->
+
+    <section class="brand-cta">
+      <div class="cta-banner reveal">
+        <img
+          src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=2000&auto=format&fit=crop"
+        />
+
+        <div class="cta-overlay"></div>
+
+        <div class="cta-content">
+          <h2>Become Part of the Emayaa Story</h2>
+
+          <p>
+            Discover curated luxury residences crafted with timeless
+            architecture, emotional design, and refined living experiences.
+          </p>
+
+          <a href="./our-project.html" class="cta-btn">
+            Explore Our Projects
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+FOOTER
+======================================== -->
+
+    <footer class="emf-footer">
+      <div class="emf-grid">
+        <div>
+          <div class="emf-logo">
+            <img src="./xm xlms.png" alt="Emayaa Luxury Homes" />
+          </div>
+
+          <p class="emf-desc">
+            Emayaa Luxury Homes is dedicated to crafting refined living spaces
+            that blend elegance, comfort, and thoughtful design.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="emf-title">Quick Links</h3>
+
+          <div class="emf-links">
+            <a href="./home.html">Home</a>
+            <a href="./brand-story.html">Our Brand Story</a>
+            <a href="./our-project.html">Our Projects</a>
+            <a href="./teams.html">Meet The Team</a>
+            <a href="./contact.html">Contact Us</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="emf-title">Contact Us</h3>
+
+          <div class="emf-contact">
+            <div>+91-9318988776</div>
+
+            <div>info@emayaaluxuryhomes.com</div>
+
+            <div>
+              F -6/5, Vasant Vihar<br />
+              New Delhi - 110057
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      /* ========================================
+MENU
+======================================== */
+
+      const emhMenu = document.getElementById("emhMobileMenu");
+
+      const emhOpen = document.getElementById("emhOpenMenu");
+
+      const emhClose = document.getElementById("emhCloseMenu");
+
+      emhOpen.addEventListener("click", () => {
+        emhMenu.classList.add("active");
+      });
+
+      emhClose.addEventListener("click", () => {
+        emhMenu.classList.remove("active");
+      });
+
+      /* ========================================
+SCROLL REVEAL
+======================================== */
+
+      const reveals = document.querySelectorAll(".reveal");
+
+      window.addEventListener("scroll", () => {
+        reveals.forEach((el) => {
+          const windowHeight = window.innerHeight;
+          const revealTop = el.getBoundingClientRect().top;
+          const revealPoint = 120;
+
+          if (revealTop < windowHeight - revealPoint) {
+            el.classList.add("active");
+          }
+        });
+      });
+
+      /* ========================================
+PARALLAX HERO
+======================================== */
+
+      window.addEventListener("scroll", () => {
+        const heroImage = document.querySelector(".hero-container img");
+
+        const scrollY = window.scrollY;
+
+        heroImage.style.transform = `translateY(${scrollY * 0.12}px) scale(1.05)`;
+      });
+    </script>
+  </body>
+</html>

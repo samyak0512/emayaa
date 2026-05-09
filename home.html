@@ -1,0 +1,1192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Emayaa Luxury Homes</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ========================================
+ROOT
+======================================== */
+
+      :root {
+        --bg: #f5f5f2;
+        --green: #183124;
+        --green-dark: #10281d;
+        --text: #5f5f5f;
+        --white: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--green);
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+      }
+
+      /* ========================================
+HEADER
+======================================== */
+
+      .emh-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 16px 40px;
+        background: linear-gradient(90deg, #183124 0%, #10281d 100%);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 99999;
+      }
+
+      .emh-logo img {
+        width: 280px;
+        display: block;
+      }
+
+      /* MENU BUTTON */
+
+      .emh-menu-btn {
+        width: 46px;
+        height: 46px;
+        border: none;
+        border-radius: 50%;
+        background: #ece2d7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+
+      .emh-menu-btn:hover {
+        transform: scale(1.05);
+      }
+
+      .emh-menu-btn span {
+        width: 18px;
+        height: 2px;
+        background: #173122;
+      }
+
+      /* ========================================
+FULLSCREEN MENU
+======================================== */
+
+      .emh-mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(180deg, #183124 0%, #10281d 100%);
+        z-index: 999999;
+        transition: 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+        padding: 40px 30px;
+      }
+
+      .emh-mobile-menu.active {
+        right: 0;
+      }
+
+      .emh-close {
+        width: 46px;
+        height: 46px;
+        border: none;
+        border-radius: 50%;
+        background: #ece2d7;
+        margin-left: auto;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .emh-close::before,
+      .emh-close::after {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 2px;
+        background: #173122;
+        left: 14px;
+        top: 22px;
+      }
+
+      .emh-close::before {
+        transform: rotate(45deg);
+      }
+
+      .emh-close::after {
+        transform: rotate(-45deg);
+      }
+
+      .emh-menu-links {
+        margin-top: 120px;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .emh-menu-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 58px;
+        font-family: "Cormorant Garamond", serif;
+        transition: 0.35s ease;
+      }
+
+      .emh-menu-links a:hover {
+        color: #d7bda9;
+        transform: translateX(10px);
+      }
+
+      /* ========================================
+GENERAL SECTION
+======================================== */
+
+      section {
+        padding: 110px 7%;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+      }
+
+      .section-title {
+        font-size: 72px;
+        line-height: 1;
+        margin-bottom: 20px;
+      }
+
+      .section-subtitle {
+        font-size: 28px;
+        line-height: 1.4;
+        color: #46574f;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      /* ========================================
+HERO SLIDER
+======================================== */
+
+      .hero {
+        padding: 0;
+        margin-top: 78px;
+      }
+
+      .hero-slider {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .hero-slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: 1s ease;
+      }
+
+      .hero-slide.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .hero-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.38);
+      }
+
+      .hero-content {
+        position: absolute;
+        top: 50%;
+        left: 7%;
+        transform: translateY(-50%);
+        max-width: 700px;
+        z-index: 2;
+      }
+
+      .hero-content h1 {
+        color: white;
+        font-size: 92px;
+        line-height: 1;
+        margin-bottom: 20px;
+      }
+
+      .hero-content p {
+        color: white;
+        font-size: 42px;
+        line-height: 1.2;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .hero-dots {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 12px;
+        z-index: 5;
+      }
+
+      .hero-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+      }
+
+      .hero-dot.active {
+        background: white;
+      }
+
+      /* ========================================
+ABOUT
+======================================== */
+
+      .about {
+        text-align: center;
+      }
+
+      .about h2 {
+        font-size: 58px;
+        margin-bottom: 30px;
+      }
+
+      .about p {
+        max-width: 900px;
+        margin: auto;
+        line-height: 2;
+        color: var(--text);
+        font-size: 17px;
+      }
+
+      /* ========================================
+PROJECTS
+======================================== */
+
+      .projects-title {
+        margin-bottom: 90px;
+      }
+
+      .projects-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 140px;
+      }
+
+      .project-card {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        gap: 70px;
+        align-items: center;
+      }
+
+      .project-card:nth-child(even) {
+        direction: rtl;
+      }
+
+      .project-card:nth-child(even) .project-content {
+        direction: ltr;
+      }
+
+      .project-content h3 {
+        font-size: 52px;
+        margin-bottom: 25px;
+      }
+
+      .location {
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #7f7f7f;
+        margin-bottom: 20px;
+      }
+
+      .project-content p {
+        color: var(--text);
+        line-height: 2;
+        font-size: 16px;
+        margin-bottom: 30px;
+      }
+
+      .project-features {
+        list-style: none;
+      }
+
+      .project-features li {
+        margin-bottom: 12px;
+        color: #51635b;
+        position: relative;
+        padding-left: 22px;
+      }
+
+      .project-features li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--green);
+      }
+
+      .project-image {
+        overflow: hidden;
+      }
+
+      .project-image img {
+        width: 100%;
+        height: 760px;
+        object-fit: cover;
+        transition: 1.2s ease;
+      }
+
+      .project-card:hover .project-image img {
+        transform: scale(1.08);
+      }
+
+      /* ========================================
+GALLERY
+======================================== */
+
+      .gallery-top {
+        text-align: center;
+        margin-bottom: 70px;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 22px;
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 340px;
+        object-fit: cover;
+        transition: 0.8s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.35);
+        opacity: 0;
+        transition: 0.4s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .gallery-overlay span {
+        color: white;
+        font-size: 20px;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+
+      /* ========================================
+MESSAGE
+======================================== */
+
+      .message {
+        text-align: center;
+      }
+
+      .message-box {
+        max-width: 900px;
+        margin: auto;
+        padding: 80px 60px;
+        background: white;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+      }
+
+      .message-box h2 {
+        font-size: 54px;
+        margin-bottom: 25px;
+      }
+
+      .message-box p {
+        color: var(--text);
+        line-height: 2;
+        font-size: 17px;
+      }
+
+      /* ========================================
+CTA
+======================================== */
+
+      .cta {
+        padding: 110px 0 0;
+      }
+
+      .cta-banner {
+        position: relative;
+        width: 100%;
+        height: 720px;
+        overflow: hidden;
+      }
+
+      .cta-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .cta-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+      .cta-content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 30px;
+      }
+
+      .cta-content h2 {
+        color: white;
+        font-size: 74px;
+        margin-bottom: 20px;
+      }
+
+      .cta-content p {
+        color: white;
+        max-width: 700px;
+        line-height: 1.8;
+        margin-bottom: 35px;
+      }
+
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px 34px;
+        border: 1px solid white;
+        color: white;
+        text-decoration: none;
+        transition: 0.4s ease;
+        font-size: 15px;
+      }
+
+      .cta-btn:hover {
+        background: white;
+        color: var(--green);
+      }
+
+      /* ========================================
+SCROLL ANIMATION
+======================================== */
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(80px);
+        transition: 1s cubic-bezier(0.17, 0.67, 0.32, 1);
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ========================================
+LIGHTBOX
+======================================== */
+
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.4s ease;
+        z-index: 999;
+      }
+
+      .lightbox.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+      }
+
+      /* ========================================
+FOOTER
+======================================== */
+
+      .emf-footer {
+        background: linear-gradient(90deg, #183124 0%, #10281d 100%);
+        padding: 70px 7%;
+      }
+
+      .emf-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr;
+        gap: 70px;
+      }
+
+      .emf-logo img {
+        width: 240px;
+        margin-bottom: 24px;
+      }
+
+      .emf-desc {
+        color: white;
+        line-height: 2;
+        max-width: 340px;
+      }
+
+      .emf-title {
+        color: #c7c7c7;
+        margin-bottom: 20px;
+        font-weight: 400;
+      }
+
+      .emf-links {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .emf-links a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .emf-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        color: white;
+        line-height: 1.8;
+      }
+
+      /* ========================================
+RESPONSIVE
+======================================== */
+
+      @media (max-width: 1200px) {
+        .gallery-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 992px) {
+        section {
+          padding: 90px 5%;
+        }
+
+        .project-card,
+        .project-card:nth-child(even) {
+          grid-template-columns: 1fr;
+          direction: ltr;
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .emf-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .emh-header {
+          padding: 14px 18px;
+        }
+
+        .emh-logo img {
+          width: 190px;
+        }
+
+        .hero {
+          margin-top: 68px;
+        }
+
+        .hero-slider {
+          height: 85vh;
+        }
+
+        .hero-content {
+          left: 30px;
+          right: 30px;
+        }
+
+        .hero-content h1 {
+          font-size: 52px;
+        }
+
+        .hero-content p {
+          font-size: 28px;
+        }
+
+        .about h2 {
+          font-size: 42px;
+        }
+
+        .section-title {
+          font-size: 46px;
+        }
+
+        .project-content h3 {
+          font-size: 38px;
+        }
+
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-item img {
+          height: 300px;
+        }
+
+        .message-box {
+          padding: 50px 30px;
+        }
+
+        .message-box h2 {
+          font-size: 40px;
+        }
+
+        .cta-content h2 {
+          font-size: 42px;
+        }
+
+        .cta-banner {
+          height: 520px;
+        }
+
+        .emh-menu-links {
+          margin-top: 90px;
+        }
+
+        .emh-menu-links a {
+          font-size: 36px;
+        }
+
+        .emf-footer {
+          padding: 50px 22px;
+        }
+
+        .emf-logo img {
+          width: 190px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-content h1 {
+          font-size: 42px;
+        }
+
+        .hero-content p {
+          font-size: 22px;
+        }
+
+        .section-title {
+          font-size: 38px;
+        }
+
+        .project-content h3 {
+          font-size: 32px;
+        }
+
+        .project-image img {
+          height: 420px;
+        }
+
+        .cta-content h2 {
+          font-size: 34px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ========================================
+HEADER
+======================================== -->
+
+    <header class="emh-header">
+      <a href="#" class="emh-logo">
+        <img src="./xm xlms.png" alt="Emayaa Luxury Homes" />
+      </a>
+
+      <button class="emh-menu-btn" id="emhOpenMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <!-- ========================================
+FULLSCREEN MENU
+======================================== -->
+
+    <div class="emh-mobile-menu" id="emhMobileMenu">
+      <button class="emh-close" id="emhCloseMenu"></button>
+
+      <div class="emh-menu-links">
+        <a href="./home.html">Home</a>
+            <a href="./brand-story.html">Our Brand Story</a>
+            <a href="./our-project.html">Our Projects</a>
+            <a href="./teams.html">Meet The Team</a>
+            <a href="./contact.html">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- ========================================
+HERO SLIDER
+======================================== -->
+
+    <section class="hero">
+      <div class="hero-slider">
+        <!-- SLIDE 1 -->
+
+        <div class="hero-slide active">
+          <img
+            src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=2000&auto=format&fit=crop"
+          />
+
+          <div class="hero-overlay"></div>
+
+          <div class="hero-content">
+            <h1>Emayaa</h1>
+
+            <p>
+              A legacy of Trust,<br />
+              A vision of Art
+            </p>
+          </div>
+        </div>
+
+        <!-- SLIDE 2 -->
+
+        <div class="hero-slide">
+          <img
+            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000&auto=format&fit=crop"
+          />
+
+          <div class="hero-overlay"></div>
+
+          <div class="hero-content">
+            <h1>Luxury Living</h1>
+
+            <p>
+              Crafted spaces with<br />
+              timeless sophistication
+            </p>
+          </div>
+        </div>
+
+        <!-- SLIDE 3 -->
+
+        <div class="hero-slide">
+          <img
+            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2000&auto=format&fit=crop"
+          />
+
+          <div class="hero-overlay"></div>
+
+          <div class="hero-content">
+            <h1>Private Residences</h1>
+
+            <p>
+              Elevated experiences<br />
+              designed for generations
+            </p>
+          </div>
+        </div>
+
+        <!-- DOTS -->
+
+        <div class="hero-dots">
+          <span class="hero-dot active"></span>
+          <span class="hero-dot"></span>
+          <span class="hero-dot"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+
+    <section class="about reveal">
+      <h2>At Emayaa, excellence is a family tradition</h2>
+
+      <p>
+        Rooted in integrity and refined real estate mastery, we are a
+        modern-generation firm redefining luxury lifestyles.
+        <br /><br />
+        Led by decades of expertise and a passion for thoughtful architecture,
+        Emayaa crafts residences that merge timeless sophistication with
+        contemporary elegance. Every project reflects a commitment to detail,
+        craftsmanship, and elevated living experiences.
+      </p>
+    </section>
+
+    <!-- PROJECTS -->
+
+    <section class="projects">
+      <div class="projects-title reveal">
+        <h2 class="section-title">Our Projects</h2>
+      </div>
+
+      <div class="projects-grid">
+        <!-- PROJECT 1 -->
+
+        <div class="project-card reveal">
+          <div class="project-content">
+            <div class="location">Goa • Luxury Villa</div>
+
+            <h3>The Creek by Emayaa Homes</h3>
+
+            <p>
+              Designed for modern luxury seekers, The Creek blends Mediterranean
+              architecture with tropical serenity. Every corner is curated with
+              premium finishes, expansive layouts, and timeless aesthetics.
+            </p>
+
+            <ul class="project-features">
+              <li>Private infinity pool</li>
+              <li>Smart automation systems</li>
+              <li>Double-height living spaces</li>
+              <li>Landscape-focused architecture</li>
+            </ul>
+          </div>
+
+          <div class="project-image">
+            <img
+              src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1200&auto=format&fit=crop"
+            />
+          </div>
+        </div>
+
+        <!-- PROJECT 2 -->
+
+        <div class="project-card reveal">
+          <div class="project-content">
+            <div class="location">Bali Inspired Residence</div>
+
+            <h3>Villa Poesia</h3>
+
+            <p>
+              A sanctuary where architecture dissolves into nature. Villa Poesia
+              delivers tranquil experiences through water courtyards, lush
+              tropical palettes, and immersive indoor-outdoor living.
+            </p>
+
+            <ul class="project-features">
+              <li>Resort-inspired pool decks</li>
+              <li>Biophilic design language</li>
+              <li>Natural stone textures</li>
+              <li>Private luxury suites</li>
+            </ul>
+          </div>
+
+          <div class="project-image">
+            <img
+              src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=1200&auto=format&fit=crop"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+
+    <section class="gallery">
+      <div class="gallery-top reveal">
+        <h2 class="section-title">Media Gallery</h2>
+
+        <p class="section-subtitle">
+          Curated visuals from Emayaa residences & luxury experiences
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop"
+          />
+
+          <div class="gallery-overlay">
+            <span>Luxury Exterior</span>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200&auto=format&fit=crop"
+          />
+
+          <div class="gallery-overlay">
+            <span>Modern Interior</span>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200&auto=format&fit=crop"
+          />
+
+          <div class="gallery-overlay">
+            <span>Luxury Villa</span>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1200&auto=format&fit=crop"
+          />
+
+          <div class="gallery-overlay">
+            <span>Premium Living</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MESSAGE -->
+
+    <section class="message reveal">
+      <div class="message-box">
+        <h2>President's Message</h2>
+
+        <p>
+          Our leadership philosophy is built around balance — where refined
+          aesthetics meet operational excellence. Every Emayaa project is
+          envisioned not merely as a property, but as a timeless living
+          experience crafted for generations.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+
+    <section class="cta">
+      <div class="cta-banner reveal">
+        <img
+          src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?q=80&w=2000&auto=format&fit=crop"
+        />
+
+        <div class="cta-overlay"></div>
+
+        <div class="cta-content">
+          <h2>The Emayaa Private Waitlist</h2>
+
+          <p>
+            Gain privileged access to upcoming luxury residences, curated
+            investment opportunities, and exclusive previews before public
+            release.
+          </p>
+
+          <a href="#" class="cta-btn"> Secure Your Place </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+
+    <div class="lightbox" id="lightbox">
+      <img src="" id="lightbox-img" />
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer class="emf-footer">
+      <div class="emf-grid">
+        <div>
+          <div class="emf-logo">
+            <img src="./xm xlms.png" alt="" />
+          </div>
+
+          <p class="emf-desc">
+            Emayaa Luxury Homes is dedicated to crafting refined living spaces
+            that blend elegance, comfort, and thoughtful design
+          </p>
+        </div>
+
+        <div>
+          <h3 class="emf-title">Quick Links</h3>
+
+          <div class="emf-links">
+           <a href="./home.html">Home</a>
+            <a href="./brand-story.html">Our Brand Story</a>
+            <a href="./our-project.html">Our Projects</a>
+            <a href="./teams.html">Meet The Team</a>
+            <a href="./contact.html">Contact Us</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="emf-title">Contact Us</h3>
+
+          <div class="emf-contact">
+            <div>+91-9318988776</div>
+
+            <div>info@emayaaluxuryhomes.com</div>
+
+            <div>
+              F -6/5 , Vasant Vihar<br />
+              New Delhi - 110057
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      /* ========================================
+HEADER MENU
+======================================== */
+
+      const emhMenu = document.getElementById("emhMobileMenu");
+      const emhOpen = document.getElementById("emhOpenMenu");
+      const emhClose = document.getElementById("emhCloseMenu");
+
+      emhOpen.addEventListener("click", () => {
+        emhMenu.classList.add("active");
+      });
+
+      emhClose.addEventListener("click", () => {
+        emhMenu.classList.remove("active");
+      });
+
+      /* ========================================
+HERO SLIDER
+======================================== */
+
+      const heroSlides = document.querySelectorAll(".hero-slide");
+      const heroDots = document.querySelectorAll(".hero-dot");
+
+      let heroIndex = 0;
+
+      function showHeroSlide(index) {
+        heroSlides.forEach((slide) => {
+          slide.classList.remove("active");
+        });
+
+        heroDots.forEach((dot) => {
+          dot.classList.remove("active");
+        });
+
+        heroSlides[index].classList.add("active");
+        heroDots[index].classList.add("active");
+      }
+
+      function nextHeroSlide() {
+        heroIndex++;
+
+        if (heroIndex >= heroSlides.length) {
+          heroIndex = 0;
+        }
+
+        showHeroSlide(heroIndex);
+      }
+
+      setInterval(nextHeroSlide, 5000);
+
+      heroDots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          heroIndex = index;
+
+          showHeroSlide(heroIndex);
+        });
+      });
+
+      /* ========================================
+SCROLL REVEAL
+======================================== */
+
+      const reveals = document.querySelectorAll(".reveal");
+
+      window.addEventListener("scroll", () => {
+        reveals.forEach((el) => {
+          const windowHeight = window.innerHeight;
+          const revealTop = el.getBoundingClientRect().top;
+
+          if (revealTop < windowHeight - 120) {
+            el.classList.add("active");
+          }
+        });
+      });
+
+      /* ========================================
+LIGHTBOX
+======================================== */
+
+      const galleryItems = document.querySelectorAll(".gallery-item img");
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+
+      galleryItems.forEach((img) => {
+        img.addEventListener("click", () => {
+          lightbox.classList.add("active");
+          lightboxImg.src = img.src;
+        });
+      });
+
+      lightbox.addEventListener("click", () => {
+        lightbox.classList.remove("active");
+      });
+    </script>
+  </body>
+</html>
