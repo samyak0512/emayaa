@@ -91,7 +91,7 @@ HEADER
       }
 
       /* ========================================
-FULLSCREEN MENU
+HALF SCREEN MENU
 ======================================== */
 
       .emh-mobile-menu {
@@ -100,19 +100,47 @@ FULLSCREEN MENU
         right: -100%;
         width: 100%;
         height: 100vh;
-        background: linear-gradient(180deg, #183124 0%, #10281d 100%);
+        background: rgba(16, 40, 29, 0.82);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
         z-index: 999999;
         transition: 0.55s cubic-bezier(0.77, 0, 0.18, 1);
-        padding: 40px 30px;
+        padding: 40px 50px;
+        display: flex;
+        flex-direction: column;
       }
 
       .emh-mobile-menu.active {
         right: 0;
       }
 
+      @media (min-width: 992px) {
+        .emh-mobile-menu {
+          width: 50%;
+          right: -50%;
+          border-left: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .emh-mobile-menu.active {
+          right: 0;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .emh-mobile-menu {
+          width: 100%;
+          right: -100%;
+          padding: 30px 24px;
+        }
+
+        .emh-mobile-menu.active {
+          right: 0;
+        }
+      }
+
       .emh-close {
         width: 46px;
-        height: 46px;
+        height: 55px;
         border: none;
         border-radius: 50%;
         background: #ece2d7;
@@ -129,7 +157,7 @@ FULLSCREEN MENU
         height: 2px;
         background: #173122;
         left: 14px;
-        top: 22px;
+        top: 26px;
       }
 
       .emh-close::before {
@@ -141,18 +169,30 @@ FULLSCREEN MENU
       }
 
       .emh-menu-links {
-        margin-top: 120px;
+        margin-top: 90px;
         display: flex;
         flex-direction: column;
-        gap: 28px;
+        gap: 22px;
+        height: 100%;
       }
 
       .emh-menu-links a {
         color: white;
         text-decoration: none;
-        font-size: 58px;
         font-family: "Cormorant Garamond", serif;
         transition: 0.35s ease;
+      }
+
+      @media (min-width: 992px) {
+        .emh-menu-links a {
+          font-size: 32px;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .emh-menu-links a {
+          font-size: 38px;
+        }
       }
 
       .emh-menu-links a:hover {
@@ -598,6 +638,7 @@ FOOTER
         color: #c7c7c7;
         margin-bottom: 20px;
         font-weight: 400;
+        text-decoration: none;
       }
 
       .emf-links {
@@ -618,6 +659,54 @@ FOOTER
         color: white;
         line-height: 1.8;
       }
+
+      
+      .emh-expression-link {
+        margin-top: auto;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        padding: 18px 28px;
+        border-radius: 60px;
+        background: #ece2d7;
+        color: #173122 !important;
+        font-size: 16px !important;
+        font-family: "Inter", sans-serif !important;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border: 1px solid transparent;
+        transition: 0.35s ease;
+      }
+
+      .emh-expression-link:hover {
+        background: transparent;
+        border-color: #ece2d7;
+        color: #ece2d7 !important;
+        transform: translateY(-2px);
+      }
+
+      .about-icon {
+        text-align: center;
+        margin-bottom: 34px;
+
+      }
+
+      .about-icon img {
+        width: 95px;
+        margin: auto;
+        scale: 2;
+      }
+
+      .emf-links a {
+        transition: 0.3s ease;
+      }
+
+      .emf-links a:hover {
+        color: #d9c0ad;
+        transform: translateX(6px);
+      }
+
 
       /* ========================================
 RESPONSIVE
@@ -655,7 +744,7 @@ RESPONSIVE
         }
 
         .emh-logo img {
-          width: 190px;
+          width: 220px;
         }
 
         .hero {
@@ -767,7 +856,7 @@ HEADER
 
     <header class="emh-header">
       <a href="./home.html" class="emh-logo">
-        <img src="./xm xlms.png" alt="Emayaa Luxury Homes" />
+        <img src="./ew (1).png" alt="Emayaa Luxury Homes" />
       </a>
 
       <button class="emh-menu-btn" id="emhOpenMenu">
@@ -789,8 +878,11 @@ FULLSCREEN MENU
         <a href="./brand-story.html">Our Brand Story</a>
         <a href="./our-project.html">Our Projects</a>
         <a href="./teams.html">Meet The Team</a>
-        <a href="./expression.html">Expression Of Interest</a>
         <a href="./contact.html">Contact Us</a>
+
+        <a href="./expression.html" class="emh-expression-link">
+          Expression Of Interest
+        </a>
       </div>
     </div>
 
@@ -866,6 +958,10 @@ HERO SLIDER
     <!-- ABOUT -->
 
     <section class="about reveal">
+      <div class="about-icon">
+        <img src="./LOGO ICON.png" alt="Emayaa Luxury Homes">
+      </div>
+
       <h2>At Emayaa, excellence is a family tradition</h2>
 
       <p>
@@ -1092,7 +1188,7 @@ project is balanced between art and high-stakes efficiency:
             Our homes in Goa and Kasauli are released in limited collections to ensure exclusivity and uncompromised craftsmanship. To receive early access   plans, private viewings.
           </p>
 
-          <a href="#" class="cta-btn"> Secure Your Place in the Slow Life</a>
+          <a href="./expression.html" class="cta-btn"> Secure Your Place in the Slow Life</a>
         </div>
       </div>
     </section>
@@ -1109,7 +1205,7 @@ project is balanced between art and high-stakes efficiency:
       <div class="emf-grid">
         <div>
           <div class="emf-logo">
-            <img src="./xm xlms.png" alt="" />
+            <img src="./ew (1).png" alt="" />
           </div>
 
           <p class="emf-desc">
@@ -1158,10 +1254,19 @@ HEADER MENU
 
       emhOpen.addEventListener("click", () => {
         emhMenu.classList.add("active");
+        document.body.style.overflow = "hidden";
       });
 
       emhClose.addEventListener("click", () => {
         emhMenu.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          emhMenu.classList.remove("active");
+          document.body.style.overflow = "";
+        }
       });
 
       /* ========================================
@@ -1241,6 +1346,21 @@ LIGHTBOX
       lightbox.addEventListener("click", () => {
         lightbox.classList.remove("active");
       });
+    
+      /* ========================================
+PROJECT PARALLAX
+======================================== */
+
+      window.addEventListener("scroll", () => {
+        const projectImages = document.querySelectorAll(".project-image img");
+
+        projectImages.forEach((img) => {
+          const speed = window.scrollY * 0.04;
+
+          img.style.transform = `translateY(${speed}px) scale(1.08)`;
+        });
+      });
+
     </script>
   </body>
 </html>

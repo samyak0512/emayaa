@@ -23,109 +23,317 @@ WITH CENTERED GOOGLE FORM
     />
 
     <style>
-
-      body{
-        margin:0;
-        background:#f5f4f1;
-        font-family:'Inter',sans-serif;
+      body {
+        margin: 0;
+        background: #f5f4f1;
+        font-family: "Inter", sans-serif;
       }
 
       /* =========================
 FORM SECTION
 ========================= */
 
-      .elh-form-section{
-        padding:160px 6% 120px;
-        display:flex;
-        justify-content:center;
-        align-items:center;
+      .elh-form-section {
+        padding: 160px 6% 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
-      .elh-form-wrapper{
-        width:100%;
-        max-width:1100px;
-        background:white;
-        padding:40px;
-        box-shadow:0 10px 40px rgba(0,0,0,0.04);
+      .elh-form-wrapper {
+        width: 100%;
+        max-width: 1100px;
+        background: white;
+        padding: 40px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
       }
 
-      .elh-form-top{
-        text-align:center;
-        margin-bottom:40px;
+      .elh-form-top {
+        text-align: center;
+        margin-bottom: 40px;
       }
 
-      .elh-form-subtitle{
-        font-size:13px;
-        letter-spacing:3px;
-        text-transform:uppercase;
-        color:#6f6f6f;
-        margin-bottom:18px;
+      .elh-form-subtitle {
+        font-size: 13px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #6f6f6f;
+        margin-bottom: 18px;
       }
 
-      .elh-form-title{
-        font-size:72px;
-        line-height:0.95;
-        color:#183124;
-        margin-bottom:24px;
-        font-family:serif;
+      .elh-form-title {
+        font-size: 72px;
+        line-height: 0.95;
+        color: #183124;
+        margin-bottom: 24px;
+        font-family: serif;
       }
 
-      .elh-form-desc{
-        max-width:760px;
-        margin:auto;
-        line-height:2;
-        color:#666666;
-        font-size:16px;
+      .elh-form-desc {
+        max-width: 760px;
+        margin: auto;
+        line-height: 2;
+        color: #666666;
+        font-size: 16px;
       }
 
-      .elh-google-form{
-        width:100%;
+      .elh-google-form {
+        width: 100%;
       }
 
-      .elh-google-form iframe{
-        width:100%;
-        height:1400px;
-        border:none;
-        background:white;
+      .elh-google-form iframe {
+        width: 100%;
+        height: 1400px;
+        border: none;
+        background: white;
       }
+
+      
+      /* =========================
+UPDATED HEADER
+========================= */
+
+      .elh-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 16px 40px;
+        background: linear-gradient(90deg, #183124 0%, #10281d 100%);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 99999;
+      }
+
+      .elh-logo img {
+        width: 260px;
+        display: block;
+      }
+
+      .elh-menu-btn {
+        width: 46px;
+        height: 46px;
+        border: none;
+        border-radius: 50%;
+        background: #ece2d7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+      }
+
+      .elh-menu-btn span {
+        width: 18px;
+        height: 2px;
+        background: #173122;
+      }
+
+      /* =========================
+HALF SCREEN MENU
+========================= */
+
+      .elh-mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(16, 40, 29, 0.82);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        z-index: 999999;
+        transition: 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+        padding: 40px 50px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .elh-mobile-menu.active {
+        right: 0;
+      }
+
+      @media (min-width: 992px) {
+        .elh-mobile-menu {
+          width: 50%;
+          right: -50%;
+          border-left: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .elh-mobile-menu.active {
+          right: 0;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .elh-mobile-menu {
+          width: 100%;
+          right: -100%;
+          padding: 30px 24px;
+        }
+
+        .elh-mobile-menu.active {
+          right: 0;
+        }
+      }
+
+      .elh-close {
+        width: 46px;
+        height: 55px;
+        border: none;
+        border-radius: 50%;
+        background: #ece2d7;
+        margin-left: auto;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .elh-close::before,
+      .elh-close::after {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 2px;
+        background: #173122;
+        left: 14px;
+        top: 26px;
+      }
+
+      .elh-close::before {
+        transform: rotate(45deg);
+      }
+
+      .elh-close::after {
+        transform: rotate(-45deg);
+      }
+
+      .elh-menu-links {
+        margin-top: 90px;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        height: 100%;
+      }
+
+      .elh-menu-links a {
+        color: white;
+        text-decoration: none;
+        font-family: "Cormorant Garamond", serif;
+        transition: 0.3s ease;
+      }
+
+      @media (min-width: 992px) {
+        .elh-menu-links a {
+          font-size: 32px;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .elh-menu-links a {
+          font-size: 38px;
+        }
+      }
+
+      .elh-menu-links a:hover {
+        color: #d9c0ad;
+        transform: translateX(10px);
+      }
+
+      .elh-expression-link {
+        margin-top: auto;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        padding: 18px 28px;
+        border-radius: 60px;
+        background: #ece2d7;
+        color: #173122 !important;
+        font-size: 16px !important;
+        font-family: "Inter", sans-serif !important;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border: 1px solid transparent;
+        transition: 0.35s ease;
+      }
+
+      .elh-expression-link:hover {
+        background: transparent;
+        border-color: #ece2d7;
+        color: #ece2d7 !important;
+        transform: translateY(-2px);
+      }
+
+      /* =========================
+CENTER LOGO
+========================= */
+
+      .elh-center-logo {
+        text-align: center;
+        margin-bottom: 32px;
+      }
+
+      .elh-center-logo img {
+        width: 120px;
+        margin: auto;
+        scale: 2.6;
+      }
+
+      /* =========================
+FOOTER UPGRADE
+========================= */
+
+      .elh-footer-links a {
+        color: white;
+        text-decoration: none;
+        transition: 0.3s ease;
+      }
+
+      .elh-footer-links a:hover {
+        color: #d9c0ad;
+        transform: translateX(6px);
+      }
+
 
       /* =========================
 RESPONSIVE
 ========================= */
 
-      @media(max-width:768px){
-
-        .elh-form-section{
-          padding:130px 20px 80px;
+      @media (max-width: 768px) {
+        .elh-form-section {
+          padding: 130px 20px 80px;
         }
 
-        .elh-form-wrapper{
-          padding:24px;
+        .elh-form-wrapper {
+          padding: 24px;
         }
 
-        .elh-form-title{
-          font-size:42px;
+        .elh-form-title {
+          font-size: 42px;
         }
 
-        .elh-google-form iframe{
-          height:1650px;
+        .elh-google-form iframe {
+          height: 1650px;
         }
-
       }
 
+      .elh-footer-links {
+        text-decoration: none;
+        color: #ffffff;
+      }
     </style>
-
   </head>
 
   <body>
-
     <!-- =========================
 HEADER
 ========================= -->
 
     <header class="elh-header">
       <a href="./home.html" class="elh-logo">
-        <img src="./xm xlms.png" alt="Emayaa Luxury Homes" />
+        <img src="./ew (1).png" alt="Emayaa Luxury Homes" />
       </a>
 
       <button class="elh-menu-btn" id="openMenu">
@@ -140,20 +348,19 @@ FULL SCREEN MENU
 ========================= -->
 
     <div class="elh-mobile-menu" id="mobileMenu">
-
       <button class="elh-close" id="closeMenu"></button>
 
       <div class="elh-menu-links">
-
         <a href="./home.html">Home</a>
         <a href="./brand-story.html">Our Brand Story</a>
         <a href="./our-project.html">Our Projects</a>
         <a href="./teams.html">Meet The Team</a>
-        <a href="./expression.html">Expression Of Interest</a>
         <a href="./contact.html">Contact Us</a>
 
+        <a href="./expression.html" class="elh-expression-link">
+          Expression Of Interest
+        </a>
       </div>
-
     </div>
 
     <!-- =========================
@@ -161,47 +368,41 @@ FORM SECTION
 ========================= -->
 
     <section class="elh-form-section">
-
       <div class="elh-form-wrapper">
-
         <div class="elh-form-top">
-
-          <div class="elh-form-subtitle">
-            Emayaa Luxury Homes
+          <div class="elh-center-logo">
+            <img src="/Artboard 3 (1).png" alt="Emayaa Luxury Homes" />
           </div>
 
-          <h1 class="elh-form-title">
-            Expression Of Interest
-          </h1>
+          <!-- <div class="elh-form-subtitle">Emayaa Luxury Homes</div> -->
+
+          <h1 class="elh-form-title">Expression Of Interest</h1>
 
           <div class="elh-form-desc">
-            Register your interest to receive exclusive updates,
-            private previews, project launches, and curated luxury investment opportunities from Emayaa Luxury Homes.
+            Register your interest to receive exclusive updates, private
+            previews, project launches, and curated luxury investment
+            opportunities from Emayaa Luxury Homes.
           </div>
-
         </div>
 
         <!-- GOOGLE FORM -->
 
         <!-- GOOGLE FORM -->
 
-            <div class="elh-google-form">
-
-            <iframe
-                src="https://docs.google.com/forms/d/e/1FAIpQLSeEiwzLA2Jpr0of7oc8_jZtzDY2OX1LnahhVmXjulS3VDQHHQ/viewform?embedded=true"
-                width="100%"
-                height="1777"
-                frameborder="0"
-                marginheight="0"
-                marginwidth="0"
-                loading="lazy">
-                Loading…
-            </iframe>
-
-            </div>
-
+        <div class="elh-google-form">
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSeEiwzLA2Jpr0of7oc8_jZtzDY2OX1LnahhVmXjulS3VDQHHQ/viewform?embedded=true"
+            width="100%"
+            height="1777"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            loading="lazy"
+          >
+            Loading…
+          </iframe>
+        </div>
       </div>
-
     </section>
 
     <!-- =========================
@@ -209,65 +410,49 @@ FOOTER
 ========================= -->
 
     <footer class="elh-footer">
-
       <div class="elh-footer-grid">
-
         <!-- LEFT -->
 
         <div>
-
           <div class="elh-footer-logo">
-            <img src="./xm xlms.png" alt="Emayaa Luxury Homes" />
+            <img src="./ew (1).png" alt="Emayaa Luxury Homes" />
           </div>
 
           <div class="elh-footer-desc">
             Emayaa Luxury Homes is dedicated to crafting refined living spaces
             that blend elegance, comfort, and thoughtful design
           </div>
-
         </div>
 
         <!-- CENTER -->
 
         <div>
-
-          <div class="elh-footer-title">
-            Quick Links
-          </div>
+          <div class="elh-footer-title">Quick Links</div>
 
           <div class="elh-footer-links">
-
             <a href="./home.html">Home</a>
             <a href="./brand-story.html">Our Brand Story</a>
             <a href="./our-project.html">Our Projects</a>
             <a href="./teams.html">Meet The Team</a>
             <a href="./expression.html">Expression Of Interest</a>
             <a href="./contact.html">Contact Us</a>
-
           </div>
 
           <div class="elh-social">
-
             <svg viewBox="0 0 24 24">
               <path
                 d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4Zm9.65 1.5a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"
               />
             </svg>
-
           </div>
-
         </div>
 
         <!-- RIGHT -->
 
         <div>
-
-          <div class="elh-footer-title">
-            Contact Us
-          </div>
+          <div class="elh-footer-title">Contact Us</div>
 
           <div class="elh-contact">
-
             <div>+91-9318988776</div>
 
             <div>info@emayaaluxuryhomes.com</div>
@@ -276,20 +461,38 @@ FOOTER
               F -6/5 , Vasant Vihar<br />
               New Delhi - 110057
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </footer>
 
     <!-- =========================
 JS
 ========================= -->
 
-    <script src="script.js"></script>
+    <script>
+      const elhMenu = document.getElementById("mobileMenu");
 
+      const elhOpen = document.getElementById("openMenu");
+
+      const elhClose = document.getElementById("closeMenu");
+
+      elhOpen.addEventListener("click", () => {
+        elhMenu.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+
+      elhClose.addEventListener("click", () => {
+        elhMenu.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          elhMenu.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+      });
+    </script>
   </body>
 </html>

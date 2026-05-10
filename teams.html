@@ -4,205 +4,504 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Emayaa Luxury Homes</title>
-
-    <link rel="stylesheet" href="style.css" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
+    <title>Meet The Team - Emayaa Luxury Homes</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
+
+    <style>
+      :root {
+        --bg: #f5f4f1;
+        --green: #20372c;
+        --light-green: #46584f;
+        --text: #686868;
+        --white: #ffffff;
+        --border: #d9ddd8;
+        --accent: #ece2d7;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--bg);
+        font-family: "Inter", sans-serif;
+        color: var(--green);
+        overflow-x: hidden;
+      }
+
+      /* ========================================
+      HEADER
+      ======================================== */
+      .emh-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 16px 40px;
+        background: linear-gradient(90deg, #183124 0%, #10281d 100%);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 99999;
+      }
+
+      .emh-logo img {
+        width: 260px;
+        display: block;
+      }
+
+      .emh-menu-btn {
+        width: 46px;
+        height: 46px;
+        border: none;
+        border-radius: 50%;
+        background: var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+      }
+
+      .emh-menu-btn span {
+        width: 18px;
+        height: 2px;
+        background: #173122;
+      }
+
+      /* ========================================
+      MOBILE MENU
+      ======================================== */
+      .emh-mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(16, 40, 29, 0.82);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        z-index: 999999;
+        transition: 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+        padding: 40px 50px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .emh-mobile-menu.active {
+        right: 0;
+      }
+
+      @media (min-width: 992px) {
+        .emh-mobile-menu {
+          width: 50%;
+          right: -50%;
+          border-left: 1px solid rgba(255, 255, 255, 0.08);
+        }
+      }
+
+      .emh-close {
+        width: 46px;
+        height: 46px;
+        border: none;
+        border-radius: 50%;
+        background: var(--accent);
+        margin-left: auto;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .emh-close::before, .emh-close::after {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 2px;
+        background: #173122;
+        left: 14px;
+        top: 22px;
+      }
+
+      .emh-close::before { transform: rotate(45deg); }
+      .emh-close::after { transform: rotate(-45deg); }
+
+      .emh-menu-links {
+        margin-top: 90px;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+      }
+
+      .emh-menu-links a {
+        color: white;
+        text-decoration: none;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 32px;
+        transition: 0.3s ease;
+      }
+
+      .emh-menu-links a:hover {
+        color: #d9c0ad;
+        transform: translateX(10px);
+      }
+
+      .emh-expression-link {
+        margin-top: 40px;
+        display: inline-flex;
+        padding: 18px 28px;
+        border-radius: 60px;
+        background: var(--accent);
+        color: #173122 !important;
+        font-size: 16px !important;
+        font-family: "Inter", sans-serif !important;
+        text-transform: uppercase;
+        text-decoration: none;
+        width: fit-content;
+      }
+
+      /* ========================================
+      TEAM LAYOUT LOGIC
+      ======================================== */
+      .team-section {
+        padding: 160px 7% 100px;
+        position: relative;
+      }
+
+      .top-heading {
+        text-align: center;
+        margin-bottom: 120px;
+      }
+
+      .top-heading .sub {
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-size: 12px;
+        color: #7b857f;
+        margin-bottom: 18px;
+      }
+
+      .top-heading h1 {
+        font-size: 72px;
+        line-height: 0.95;
+        margin-bottom: 24px;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .team-container {
+        display: flex;
+        flex-direction: column;
+        gap: 160px;
+      }
+
+      .team-card {
+        display: grid;
+        grid-template-columns: 0.95fr 1fr;
+        gap: 90px;
+        align-items: flex-start;
+      }
+
+      /* REVERSE CLASS: TEXT LEFT, IMAGE RIGHT */
+      .team-card.reverse {
+        grid-template-columns: 1fr 0.95fr;
+      }
+
+      .team-card.reverse .image-wrapper {
+        order: 2;
+      }
+
+      .team-card.reverse .content {
+        order: 1;
+      }
+
+      .image-wrapper {
+        position: sticky;
+        top: 140px;
+        border-radius: 12px;
+        overflow: hidden;
+        height: 750px;
+      }
+
+      .image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+      }
+
+      .team-card:hover .image-wrapper img {
+        transform: scale(1.05);
+      }
+
+      .content h2 {
+        font-size: 52px;
+        line-height: 1.1;
+        margin-bottom: 10px;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .content h3 {
+        font-size: 20px;
+        margin-bottom: 30px;
+        color: #7b857f;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .content p {
+        font-size: 17px;
+        line-height: 2;
+        color: var(--text);
+        margin-bottom: 20px;
+      }
+
+      /* ========================================
+      FOOTER
+      ======================================== */
+      .emf-footer {
+        background: linear-gradient(90deg, #183124 0%, #10281d 100%);
+        padding: 80px 7%;
+        color: white;
+      }
+
+      .emf-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr;
+        gap: 70px;
+      }
+
+      .emf-logo img {
+        width: 240px;
+        margin-bottom: 24px;
+      }
+
+      .emf-desc {
+        line-height: 1.8;
+        max-width: 340px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .emf-title {
+        color: var(--accent);
+        margin-bottom: 25px;
+        font-weight: 500;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .emf-links {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .emf-links a {
+        color: white;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .emf-links a:hover {
+        color: var(--accent);
+        transform: translateX(8px);
+      }
+
+      .emf-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        line-height: 1.8;
+      }
+
+      /* ========================================
+      ANIMATIONS & RESPONSIVE
+      ======================================== */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: 1.2s cubic-bezier(0.17, 0.67, 0.31, 1);
+      }
+
+      .fade-up.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 992px) {
+        .team-card, .team-card.reverse {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        
+        .team-card.reverse .image-wrapper, .team-card .image-wrapper {
+          order: 1;
+          position: relative;
+          top: 0;
+          height: 500px;
+        }
+        
+        .team-card.reverse .content, .team-card .content {
+          order: 2;
+        }
+
+        .top-heading h1 {
+          font-size: 48px;
+        }
+
+        .emf-grid {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <header class="elh-header">
-      <a href="./home.html" class="elh-logo">
-        <img src="/xm xlms.png" alt="Emayaa Luxury Homes" />
+    <header class="emh-header">
+      <a href="./home.html" class="emh-logo">
+        <img src="./ew (1).png" alt="Emayaa Luxury Homes" />
       </a>
-
-      <button class="elh-menu-btn" id="openMenu">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="emh-menu-btn" id="emhOpenMenu">
+        <span></span><span></span><span></span>
       </button>
     </header>
 
-    <!-- =========================FULL SCREEN MENU========================= -->
-
-    <div class="elh-mobile-menu" id="mobileMenu">
-      <button class="elh-close" id="closeMenu"></button>
-
-      <div class="elh-menu-links">
-        <a href="#">Home</a>
-        <a href="#">Our Brand Story</a>
-        <a href="#">Our Projects</a>
-        <a href="#">Meet The Team</a>
-        <a href="#">Contact Us</a>
+    <div class="emh-mobile-menu" id="emhMobileMenu">
+      <button class="emh-close" id="emhCloseMenu"></button>
+      <div class="emh-menu-links">
+        <a href="./home.html">Home</a>
+        <a href="./brand-story.html">Our Brand Story</a>
+        <a href="./our-project.html">Our Projects</a>
+        <a href="./teams.html">Meet The Team</a>
+        <a href="./contact.html">Contact Us</a>
+        <a href="./expression.html" class="emh-expression-link">Expression Of Interest</a>
       </div>
     </div>
+
     <section class="team-section">
       <div class="top-heading fade-up">
         <div class="sub">Emayaa Luxury Homes</div>
-
         <h1>THE MINDS BEHIND EMAYAA</h1>
-
         <p>A synergy of heritage, heart, and high-performance operations</p>
       </div>
 
       <div class="team-container">
-        <!-- TEAM MEMBER 1 -->
-
         <div class="team-card fade-up">
+          <div class="image-wrapper">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1200" alt="Mr. BK Dhingra" />
+          </div>
           <div class="content">
-            <h2>Mr. BK Dhingra - Chairman</h2>
-
-            <h3>The Foundation of Trust</h3>
-
+            <h2>Mr. BK Dhingra</h2>
+            <h3>Chairman & Founder</h3>
             <p>
-              With a distinguished career as a practicing Chartered Account and
-              over 25 years of mastery in the real estate sector, Mr. Dhingra
-              provides the bedrock of financial integrity upon which Emayaa is
-              built.
+              With over 25 years of mastery in the real estate sector, Mr. Dhingra provides the bedrock of financial integrity upon which Emayaa is built.
               <br /><br />
-              He oversees the company's fiscal health and strategic growth,
-              ensuring that every project is backed by ironclad transparency and
-              long-term investment value.
+              He oversees the company's fiscal health and strategic growth, ensuring every project is backed by transparency and long-term value.
               <br /><br />
-              His decades of expertise serve as our guiding compass, blending
-              traditional wisdom with modern stability.
+              His decades of expertise serve as our guiding compass, blending traditional wisdom with modern stability.
             </p>
           </div>
-
-          <div class="image-wrapper">
-            <img
-              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1200&auto=format&fit=crop"
-              alt=""
-            />
-          </div>
         </div>
-
-        <!-- TEAM MEMBER 2 -->
 
         <div class="team-card reverse fade-up">
-          <div class="content">
-            <h2>Ridhii Aroraa - Creative Head</h2>
-
-            <h3>The Soul of the Space</h3>
-
-            <p>
-              A business graduate with a lifelong passion for design, Ridhii is
-              the visionary behind all different concepts of each of Emayaa's
-              Projects.
-              <br /><br />
-              As the first point of contact for our clients, she translates
-              dreams into architectural reality, leading the design
-              conceptualization and planning of every home.
-              <br /><br />
-              Beyond the aesthetic, she is the architect of our internal
-              systems, ensuring seamless communication and rigorous quarterly
-              reporting for our board of investors.
-            </p>
-          </div>
-
           <div class="image-wrapper">
-            <img
-              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop"
-              alt=""
-            />
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200" alt="Ridhii Aroraa" />
+          </div>
+          <div class="content">
+            <h2>Ridhii Aroraa</h2>
+            <h3>Creative Head</h3>
+            <p>
+              Ridhii is the visionary behind the aesthetic concepts of Emayaa's projects, translating dreams into architectural reality.
+              <br /><br />
+              Beyond design, she architectures our internal systems, ensuring seamless communication and rigorous reporting for our investors.
+              <br /><br />
+              As the first point of contact for our clients, she leads the design conceptualization and planning of every home.
+            </p>
           </div>
         </div>
 
-        <!-- TEAM MEMBER 3 -->
-
         <div class="team-card fade-up">
-          <div class="content">
-            <h2>Prathap Arora - Managing Director</h2>
-
-            <h3>The Engine of Execution</h3>
-
-            <p>
-              Precision, negotiation, and on-ground excellence define Prathap's
-              leadership at Emayaa.
-              <br /><br />
-              From the initial acquisition of prime land in Goa and Kasauli to
-              the final brick laid on-site, he manages the day-to-day pulse of
-              our operations.
-              <br /><br />
-              His expertise lies in navigating complex negotiations, managing
-              our network of elite brokers, and ensuring that our construction
-              standards meet the "Emayaa Benchmark."
-              <br /><br />
-              He turns ambitious blueprints into tangible, high-quality
-              sanctuaries.
-            </p>
-          </div>
-
           <div class="image-wrapper">
-            <img
-              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop"
-              alt=""
-            />
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1200" alt="Prathap Arora" />
+          </div>
+          <div class="content">
+            <h2>Prathap Arora</h2>
+            <h3>Managing Director</h3>
+            <p>
+              Precision and on-ground excellence define Prathap's leadership. He manages the day-to-day pulse of operations from acquisition to construction.
+              <br /><br />
+              He turns ambitious blueprints into tangible, high-quality sanctuaries that meet the "Emayaa Benchmark."
+              <br /><br />
+              His expertise lies in navigating complex negotiations and managing our network of elite brokers.
+            </p>
           </div>
         </div>
       </div>
     </section>
-    <footer class="elh-footer">
-      <div class="elh-footer-grid">
-        <!-- LEFT -->
 
+    <footer class="emf-footer">
+      <div class="emf-grid">
         <div>
-          <div class="elh-footer-logo">
-            <img src="/xm xlms.png" alt="Emayaa Luxury Homes" />
-          </div>
-
-          <div class="elh-footer-desc">
-            Emayaa Luxury Homes is dedicated to crafting refined living spaces
-            that blend elegance, comfort, and thoughtful design
-          </div>
+          <div class="emf-logo"><img src="./ew (1).png" alt="Emayaa" /></div>
+          <p class="emf-desc">Crafting refined living spaces that blend elegance, comfort, and thoughtful design.</p>
         </div>
-
-        <!-- CENTER -->
-
         <div>
-          <div class="elh-footer-title">Quick Links</div>
-
-          <div class="elh-footer-links">
+          <h3 class="emf-title">Quick Links</h3>
+          <div class="emf-links">
             <a href="./home.html">Home</a>
             <a href="./brand-story.html">Our Brand Story</a>
             <a href="./our-project.html">Our Projects</a>
             <a href="./teams.html">Meet The Team</a>
-            <a href="./expression.html">Expression Of Interest</a>
-            <a href="./contact.html">Contact Us</a>
-          </div>
-
-          <div class="elh-social">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4Zm9.65 1.5a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"
-              />
-            </svg>
           </div>
         </div>
-
-        <!-- RIGHT -->
-
         <div>
-          <div class="elh-footer-title">Contact Us</div>
-
-          <div class="elh-contact">
+          <h3 class="emf-title">Contact Us</h3>
+          <div class="emf-contact">
             <div>+91-9318988776</div>
             <div>info@emayaaluxuryhomes.com</div>
-            <div>
-              F -6/5 , Vasant Vihar<br />
-              New Delhi - 110057
-            </div>
+            <div>Vasant Vihar, New Delhi</div>
           </div>
         </div>
       </div>
     </footer>
-    <script src="script.js"></script>
+
+    <script>
+      // Menu Logic
+      const emhMenu = document.getElementById("emhMobileMenu");
+      const emhOpen = document.getElementById("emhOpenMenu");
+      const emhClose = document.getElementById("emhCloseMenu");
+
+      emhOpen.onclick = () => {
+        emhMenu.classList.add("active");
+        document.body.style.overflow = "hidden";
+      };
+      emhClose.onclick = () => {
+        emhMenu.classList.remove("active");
+        document.body.style.overflow = "";
+      };
+
+      // Reveal on Scroll
+      const observerOptions = { threshold: 0.1 };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+    </script>
   </body>
 </html>

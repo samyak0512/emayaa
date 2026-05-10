@@ -1,0 +1,1348 @@
+2<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Our Projects - Emayaa Luxury Homes</title>
+    <link rel="stylesheet" href="./style2.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #f5f4f1;
+        --green: #20372c;
+        --light-green: #46584f;
+        --text: #686868;
+        --white: #ffffff;
+        --border: #d9ddd8;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--bg);
+        font-family: "Inter", sans-serif;
+        color: var(--green);
+        overflow-x: hidden;
+      }
+
+      /* ========================================
+GLOBAL
+======================================== */
+
+      section {
+        padding: 120px 7%;
+      }
+
+      img {
+        width: 100%;
+        display: block;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+      }
+
+      /* ========================================
+HEADER
+======================================== */
+
+      .emh-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 16px 40px;
+        background: linear-gradient(90deg, #183124 0%, #10281d 100%);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 99999;
+      }
+
+      .emh-logo img {
+        width: 260px;
+      }
+
+      /* MENU BUTTON */
+
+      .emh-menu-btn {
+        width: 46px;
+        height: 46px;
+        border: none;
+        border-radius: 50%;
+        background: #ece2d7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+      }
+
+      .emh-menu-btn span {
+        width: 18px;
+        height: 2px;
+        background: #173122;
+      }
+
+      /* ========================================
+HALF SCREEN MENU
+======================================== */
+
+      .emh-mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(16, 40, 29, 0.82);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        z-index: 999999;
+        transition: 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+        padding: 40px 50px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .emh-mobile-menu.active {
+        right: 0;
+      }
+
+      @media (min-width: 992px) {
+        .emh-mobile-menu {
+          width: 50%;
+          right: -50%;
+          border-left: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .emh-mobile-menu.active {
+          right: 0;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .emh-mobile-menu {
+          width: 100%;
+          right: -100%;
+          padding: 30px 24px;
+        }
+
+        .emh-mobile-menu.active {
+          right: 0;
+        }
+      }
+
+      .emh-close {
+        width: 46px;
+        height: 55px;
+        border: none;
+        border-radius: 50%;
+        background: #ece2d7;
+        margin-left: auto;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .emh-close::before,
+      .emh-close::after {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 2px;
+        background: #173122;
+        left: 14px;
+        top: 26px;
+      }
+
+      .emh-close::before {
+        transform: rotate(45deg);
+      }
+
+      .emh-close::after {
+        transform: rotate(-45deg);
+      }
+
+      .emh-menu-links {
+        margin-top: 90px;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        height: 100%;
+      }
+
+      .emh-menu-links a {
+        color: white;
+        text-decoration: none;
+        font-family: "Cormorant Garamond", serif;
+        transition: 0.3s ease;
+      }
+
+      @media (min-width: 992px) {
+        .emh-menu-links a {
+          font-size: 32px;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .emh-menu-links a {
+          font-size: 38px;
+        }
+      }
+
+      .emh-menu-links a:hover {
+        color: #d9c0ad;
+        transform: translateX(10px);
+      }
+
+      /* ========================================
+PAGE HERO
+======================================== */
+
+      .projects-hero {
+        padding-top: 140px;
+        padding-bottom: 40px;
+      }
+
+      .hero-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 50px;
+        margin-bottom: 80px;
+      }
+
+      .hero-title h1 {
+        font-size: 88px;
+        line-height: 0.9;
+        margin-bottom: 25px;
+      }
+
+      .hero-title p {
+        max-width: 620px;
+        line-height: 2;
+        color: var(--text);
+      }
+
+      .hero-line {
+        width: 180px;
+        height: 1px;
+        background: var(--border);
+      }
+
+      /* ========================================
+PROJECT LIST
+======================================== */
+
+      .projects-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 170px;
+      }
+
+      .project-card {
+        display: grid;
+        grid-template-columns: 0.95fr 1.1fr;
+        gap: 90px;
+        align-items: center;
+        position: relative;
+      }
+
+      .project-card.reverse {
+        direction: rtl;
+      }
+
+      .project-card.reverse .project-content {
+        direction: ltr;
+      }
+
+      /* ========================================
+CONTENT
+======================================== */
+
+      .project-tag {
+        display: inline-block;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: #7f8a84;
+        margin-bottom: 20px;
+      }
+
+      .project-content h2 {
+        font-size: 64px;
+        line-height: 0.95;
+        margin-bottom: 25px;
+      }
+
+      .project-subtitle {
+        font-size: 18px;
+        color: #58665f;
+        margin-bottom: 30px;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .project-details {
+        margin-bottom: 35px;
+      }
+
+      .project-details p {
+        color: var(--text);
+        line-height: 2;
+        margin-bottom: 12px;
+        font-size: 15px;
+      }
+
+      .project-description {
+        margin-bottom: 35px;
+      }
+
+      .project-description p {
+        color: var(--text);
+        line-height: 2.1;
+        font-size: 16px;
+      }
+
+      .project-features {
+        list-style: none;
+        margin-bottom: 40px;
+      }
+
+      .project-features li {
+        margin-bottom: 14px;
+        color: #58665f;
+        position: relative;
+        padding-left: 24px;
+        line-height: 1.8;
+      }
+
+      .project-features li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--green);
+        font-size: 18px;
+      }
+
+      .project-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        padding: 18px 34px;
+        border: 1px solid var(--green);
+        color: var(--green);
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+        transition: 0.4s ease;
+        letter-spacing: 1px;
+      }
+
+      .project-btn span {
+        position: relative;
+        z-index: 2;
+      }
+
+      .project-btn::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--green);
+        transform: translateX(-100%);
+        transition: 0.5s ease;
+      }
+
+      .project-btn:hover::before {
+        transform: translateX(0);
+      }
+
+      .project-btn:hover {
+        color: white;
+      }
+
+      /* ========================================
+IMAGE
+======================================== */
+
+      .project-image {
+        position: relative;
+        overflow: hidden;
+        height: 820px;
+        cursor: pointer;
+      }
+
+      .project-image::before {
+        content: "";
+        position: absolute;
+        top: -150%;
+        left: -40%;
+        width: 60%;
+        height: 400%;
+        background: rgba(255, 255, 255, 0.18);
+        transform: rotate(25deg);
+        transition: 1.3s;
+        z-index: 3;
+      }
+
+      .project-card:hover .project-image::before {
+        left: 130%;
+      }
+
+      .project-image img {
+        height: 100%;
+        object-fit: cover;
+        transition: 1.2s ease;
+      }
+
+      .project-card:hover .project-image img {
+        transform: scale(1.08);
+      }
+
+      .project-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.25), transparent);
+        z-index: 1;
+      }
+
+      .image-label {
+        position: absolute;
+        left: 30px;
+        bottom: 30px;
+        z-index: 4;
+        backdrop-filter: blur(12px);
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: white;
+        padding: 14px 24px;
+        font-size: 13px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      /* ========================================
+FLOATING ELEMENT
+======================================== */
+
+      .floating-circle {
+        position: absolute;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        border: 1px solid rgba(32, 55, 44, 0.08);
+        top: -80px;
+        right: -80px;
+        z-index: -1;
+      }
+
+      /* ========================================
+REVEAL ANIMATION
+======================================== */
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(100px);
+        transition: 1.2s cubic-bezier(0.17, 0.67, 0.31, 1);
+      }
+
+      .reveal-left {
+        opacity: 0;
+        transform: translateX(-120px);
+        transition: 1.2s cubic-bezier(0.17, 0.67, 0.31, 1);
+      }
+
+      .reveal-right {
+        opacity: 0;
+        transform: translateX(120px);
+        transition: 1.2s cubic-bezier(0.17, 0.67, 0.31, 1);
+      }
+
+      .reveal.active,
+      .reveal-left.active,
+      .reveal-right.active {
+        opacity: 1;
+        transform: translate(0);
+      }
+
+      /* ========================================
+PARALLAX BG
+======================================== */
+
+      .parallax-bg {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        overflow: hidden;
+      }
+
+      .parallax-bg::before {
+        content: "";
+        position: absolute;
+        width: 900px;
+        height: 900px;
+        border-radius: 50%;
+        background: radial-gradient(rgba(32, 55, 44, 0.04), transparent 70%);
+        top: 0;
+        right: -300px;
+      }
+
+      /* ========================================
+FOOTER
+======================================== */
+
+      .emf-footer {
+        background: linear-gradient(90deg, #183124 0%, #10281d 100%);
+        padding: 70px 7%;
+        margin-top: 100px;
+      }
+
+      .emf-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr;
+        gap: 70px;
+      }
+
+      .emf-logo img {
+        width: 240px;
+        margin-bottom: 24px;
+      }
+
+      .emf-desc {
+        color: white;
+        line-height: 2;
+        max-width: 340px;
+      }
+
+      .emf-title {
+        color: #c7c7c7;
+        margin-bottom: 20px;
+        font-weight: 400;
+        font-size: 18px;
+      }
+
+      .emf-links {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .emf-links a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .emf-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        color: white;
+        line-height: 1.8;
+      }
+
+      .emh-expression-link {
+        margin-top: auto;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        padding: 18px 28px;
+        border-radius: 60px;
+        background: #ece2d7;
+        color: #173122 !important;
+        font-size: 16px !important;
+        font-family: "Inter", sans-serif !important;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border: 1px solid transparent;
+        transition: 0.35s ease;
+      }
+
+      .emh-expression-link:hover {
+        background: transparent;
+        border-color: #ece2d7;
+        color: #ece2d7 !important;
+        transform: translateY(-2px);
+      }
+
+      .emf-links a {
+        transition: 0.3s ease;
+      }
+
+      .emf-links a:hover {
+        color: #d9c0ad;
+        transform: translateX(6px);
+      }
+
+      /* ========================================
+RESPONSIVE
+======================================== */
+
+      @media (max-width: 1200px) {
+        .hero-title h1 {
+          font-size: 72px;
+        }
+
+        .project-content h2 {
+          font-size: 54px;
+        }
+
+        .project-image {
+          height: 680px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .project-card,
+        .project-card.reverse {
+          grid-template-columns: 1fr;
+          direction: ltr;
+          gap: 55px;
+        }
+
+        .project-image {
+          height: 620px;
+        }
+
+        .hero-top {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .emf-grid {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        section {
+          padding: 90px 5%;
+        }
+
+        .emh-header {
+          padding: 14px 18px;
+        }
+
+        .emh-logo img {
+          width: 220px;
+        }
+
+        .hero-title h1 {
+          font-size: 54px;
+        }
+
+        .project-content h2 {
+          font-size: 42px;
+        }
+
+        .project-image {
+          height: 480px;
+        }
+
+        .projects-wrapper {
+          gap: 110px;
+        }
+
+        .emh-menu-links {
+          margin-top: 90px;
+        }
+
+        .emh-menu-links a {
+          font-size: 36px;
+        }
+
+        .emf-footer {
+          padding: 50px 22px;
+        }
+
+        .emf-logo img {
+          width: 190px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-title h1 {
+          font-size: 42px;
+        }
+
+        .project-content h2 {
+          font-size: 34px;
+        }
+
+        .project-image {
+          height: 380px;
+        }
+
+        .project-btn {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      .elh-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 16px 40px;
+        background: linear-gradient(90deg, #183124 0%, #10281d 100%);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 99999;
+      }
+
+      .elh-logo img {
+        width: 260px;
+        display: block;
+      }
+
+      .elh-menu-btn {
+        width: 46px;
+        height: 46px;
+        border: none;
+        border-radius: 50%;
+        background: #ece2d7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+      }
+
+      .elh-menu-btn span {
+        width: 18px;
+        height: 2px;
+        background: #173122;
+      }
+
+      .elh-mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(16, 40, 29, 0.82);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        z-index: 999999;
+        transition: 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+        padding: 40px 50px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .elh-mobile-menu.active {
+        right: 0;
+      }
+
+      @media (min-width: 992px) {
+        .elh-mobile-menu {
+          width: 50%;
+          right: -50%;
+          border-left: 1px solid rgba(255, 255, 255, 0.08);
+        }
+      }
+
+      @media (max-width: 991px) {
+        .elh-mobile-menu {
+          width: 100%;
+          right: -100%;
+          padding: 30px 24px;
+        }
+      }
+
+      .elh-close {
+        width: 46px;
+        height: 55px;
+        border: none;
+        border-radius: 50%;
+        background: #ece2d7;
+        margin-left: auto;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .elh-close::before,
+      .elh-close::after {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 2px;
+        background: #173122;
+        left: 14px;
+        top: 26px;
+      }
+
+      .elh-close::before {
+        transform: rotate(45deg);
+      }
+
+      .elh-close::after {
+        transform: rotate(-45deg);
+      }
+
+      .elh-menu-links {
+        margin-top: 90px;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        height: 100%;
+      }
+
+      .elh-menu-links a {
+        color: white;
+        text-decoration: none;
+        font-family: "Cormorant Garamond", serif;
+        transition: 0.3s ease;
+      }
+
+      @media (min-width: 992px) {
+        .elh-menu-links a {
+          font-size: 32px;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .elh-menu-links a {
+          font-size: 38px;
+        }
+      }
+
+      .elh-menu-links a:hover {
+        color: #d9c0ad;
+        transform: translateX(10px);
+      }
+
+      .elh-expression-link {
+        margin-top: auto;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        padding: 18px 28px;
+        border-radius: 60px;
+        background: #ece2d7;
+        color: #173122 !important;
+        font-size: 16px !important;
+        font-family: "Inter", sans-serif !important;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border: 1px solid transparent;
+        transition: 0.35s ease;
+      }
+
+      .elh-expression-link:hover {
+        background: transparent;
+        border-color: #ece2d7;
+        color: #ece2d7 !important;
+        transform: translateY(-2px);
+      }
+
+      .team-card {
+        display: grid;
+        grid-template-columns: 0.95fr 1fr;
+        gap: 90px;
+        align-items: flex-start;
+      }
+
+      /* DEFAULT = LEFT IMAGE RIGHT CONTENT */
+      .team-card .image-wrapper {
+        order: 1;
+      }
+
+      .team-card .content {
+        order: 2;
+      }
+
+      /* REVERSE = LEFT CONTENT RIGHT IMAGE */
+      .team-card.reverse {
+        grid-template-columns: 1fr 0.95fr;
+      }
+
+      .team-card.reverse .content {
+        order: 1;
+      }
+
+      .team-card.reverse .image-wrapper {
+        order: 2;
+      }
+
+      .image-wrapper {
+        position: sticky;
+        top: 120px;
+      }
+
+      .content {
+        opacity: 1;
+        transform: translateY(0);
+        transition: 1s cubic-bezier(0.17, 0.67, 0.31, 1);
+      }
+
+      .team-card.active .content {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .elh-footer-links a {
+        transition: 0.3s ease;
+      }
+
+      .elh-footer-links a:hover {
+        color: #d9c0ad;
+        transform: translateX(6px);
+      }
+
+      @media (max-width: 992px) {
+        .team-card,
+        .team-card.reverse {
+          grid-template-columns: 1fr;
+        }
+
+        .image-wrapper {
+          position: relative;
+          top: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .elh-logo img {
+          width: 220px;
+        }
+      }
+
+      body {
+        margin: 0;
+        background: #f5f4f1;
+        color: #173122;
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+      }
+
+      .team-section {
+        padding: 140px 7% 100px;
+      }
+
+      .top-heading {
+        text-align: center;
+        margin-bottom: 120px;
+      }
+
+      .top-heading .sub {
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-size: 12px;
+        color: #7b857f;
+        margin-bottom: 18px;
+      }
+
+      .top-heading h1 {
+        font-size: 72px;
+        line-height: 0.95;
+        margin-bottom: 24px;
+        font-weight: 400;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .top-heading p {
+        font-size: 18px;
+        color: #5f6662;
+      }
+
+      .team-container {
+        display: flex;
+        flex-direction: column;
+        gap: 140px;
+      }
+
+      .content h2 {
+        font-size: 52px;
+        line-height: 1;
+        margin-bottom: 16px;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .content h3 {
+        font-size: 22px;
+        margin-bottom: 28px;
+        color: #20372c;
+        font-weight: 500;
+      }
+
+      .content p {
+        font-size: 17px;
+        line-height: 2;
+        color: #20372c;
+      }
+
+      .image-wrapper {
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .image-wrapper img {
+        width: 100%;
+        height: 820px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .elh-footer {
+        background: linear-gradient(90deg, #183124 0%, #10281d 100%);
+        padding: 70px 7%;
+      }
+
+      .elh-footer-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr;
+        gap: 70px;
+      }
+
+      .elh-footer-logo img {
+        width: 220px;
+        margin-bottom: 24px;
+      }
+
+      .elh-footer-desc,
+      .elh-footer-title,
+      .elh-footer-links a,
+      .elh-contact {
+        color: white;
+      }
+
+      .elh-footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .elh-footer-links a {
+        text-decoration: none;
+      }
+
+      .elh-contact {
+        line-height: 1.9;
+      }
+
+      .elh-social svg {
+        width: 24px;
+        fill: white;
+        margin-top: 24px;
+      }
+
+      @media (max-width: 992px) {
+        .team-card,
+        .team-card.reverse {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+
+        .image-wrapper img {
+          height: 520px;
+        }
+
+        .elh-footer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .top-heading h1 {
+          font-size: 52px;
+        }
+      }
+    
+      .content,
+      .team-card,
+      .team-container,
+      .team-section {
+        visibility: visible !important;
+        display: block;
+      }
+
+      .content {
+        position: relative;
+        z-index: 2;
+      }
+
+</style>
+  </head>
+
+  <body>
+    <div class="parallax-bg"></div>
+
+    <!-- ========================================
+HEADER
+======================================== -->
+
+    <header class="emh-header">
+      <a href="./home.html" class="emh-logo">
+        <img src="./ew (1).png" alt="Emayaa Luxury Homes" />
+      </a>
+
+      <button class="emh-menu-btn" id="emhOpenMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <!-- ========================================
+MOBILE MENU
+======================================== -->
+
+    <div class="emh-mobile-menu" id="emhMobileMenu">
+      <button class="emh-close" id="emhCloseMenu"></button>
+
+      <div class="emh-menu-links">
+        <a href="./home.html">Home</a>
+        <a href="./brand-story.html">Our Brand Story</a>
+        <a href="./our-project.html">Our Projects</a>
+        <a href="./teams.html">Meet The Team</a>
+        <a href="./contact.html">Contact Us</a>
+
+        <a href="./expression.html" class="emh-expression-link">
+          Expression Of Interest
+        </a>
+      </div>
+    </div>
+
+    <!-- ========================================
+HERO
+======================================== -->
+    <section class="team-section">
+      <div class="top-heading fade-up">
+        <div class="sub">Emayaa Luxury Homes</div>
+
+        <h1>THE MINDS BEHIND EMAYAA</h1>
+
+        <p>A synergy of heritage, heart, and high-performance operations</p>
+      </div>
+
+      <div class="team-container">
+        <!-- TEAM MEMBER 1 -->
+
+        <div class="team-card fade-up">
+          <div class="image-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1200&auto=format&fit=crop"
+              alt=""
+            />
+          </div>
+
+          <div class="content">
+            <h2>Mr. BK Dhingra - Chairman</h2>
+
+            <h3>The Foundation of Trust</h3>
+
+            <p>
+              With a distinguished career as a practicing Chartered Account and
+              over 25 years of mastery in the real estate sector, Mr. Dhingra
+              provides the bedrock of financial integrity upon which Emayaa is
+              built.
+              <br /><br />
+              He oversees the company's fiscal health and strategic growth,
+              ensuring that every project is backed by ironclad transparency and
+              long-term investment value.
+              <br /><br />
+              His decades of expertise serve as our guiding compass, blending
+              traditional wisdom with modern stability.
+            </p>
+          </div>
+        </div>
+
+        <!-- TEAM MEMBER 2 -->
+
+        <div class="team-card reverse fade-up">
+          <div class="content">
+            <h2>Ridhii Aroraa - Creative Head</h2>
+
+            <h3>The Soul of the Space</h3>
+
+            <p>
+              A business graduate with a lifelong passion for design, Ridhii is
+              the visionary behind all different concepts of each of Emayaa's
+              Projects.
+              <br /><br />
+              As the first point of contact for our clients, she translates
+              dreams into architectural reality, leading the design
+              conceptualization and planning of every home.
+              <br /><br />
+              Beyond the aesthetic, she is the architect of our internal
+              systems, ensuring seamless communication and rigorous quarterly
+              reporting for our board of investors.
+            </p>
+          </div>
+
+          <div class="image-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop"
+              alt=""
+            />
+          </div>
+        </div>
+
+        <!-- TEAM MEMBER 3 -->
+
+        <div class="team-card fade-up">
+          <div class="image-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1200&auto=format&fit=crop"
+              alt=""
+            />
+          </div>
+
+          <div class="content">
+            <h2>Prathap Arora - Managing Director</h2>
+
+            <h3>The Engine of Execution</h3>
+
+            <p>
+              Precision, negotiation, and on-ground excellence define Prathap's
+              leadership at Emayaa.
+              <br /><br />
+              From the initial acquisition of prime land in Goa and Kasauli to
+              the final brick laid on-site, he manages the day-to-day pulse of
+              our operations.
+              <br /><br />
+              His expertise lies in navigating complex negotiations, managing
+              our network of elite brokers, and ensuring that our construction
+              standards meet the "Emayaa Benchmark."
+              <br /><br />
+              He turns ambitious blueprints into tangible, high-quality
+              sanctuaries.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+FOOTER
+======================================== -->
+
+    <footer class="emf-footer">
+      <div class="emf-grid">
+        <div>
+          <div class="emf-logo">
+            <img src="./ew (1).png" alt="Emayaa Luxury Homes" />
+          </div>
+
+          <p class="emf-desc">
+            Emayaa Luxury Homes is dedicated to crafting refined living spaces
+            that blend elegance, comfort, and thoughtful design.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="emf-title">Quick Links</h3>
+
+          <div class="emf-links">
+            <a href="./home.html">Home</a>
+            <a href="./brand-story.html">Our Brand Story</a>
+            <a href="./our-project.html">Our Projects</a>
+            <a href="./teams.html">Meet The Team</a>
+            <a href="./contact.html">Contact Us</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="emf-title">Contact Us</h3>
+
+          <div class="emf-contact">
+            <div>+91-9318988776</div>
+
+            <div>info@emayaaluxuryhomes.com</div>
+
+            <div>
+              F -6/5, Vasant Vihar<br />
+              New Delhi - 110057
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      /* ========================================
+MENU
+======================================== */
+
+      const emhMenu = document.getElementById("emhMobileMenu");
+
+      const emhOpen = document.getElementById("emhOpenMenu");
+
+      const emhClose = document.getElementById("emhCloseMenu");
+
+      emhOpen.addEventListener("click", () => {
+        emhMenu.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+
+      emhClose.addEventListener("click", () => {
+        emhMenu.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          emhMenu.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+      });
+
+      /* ========================================
+SCROLL REVEAL
+======================================== */
+
+      const reveals = document.querySelectorAll(
+        ".reveal, .reveal-left, .reveal-right",
+      );
+
+      window.addEventListener("scroll", () => {
+        reveals.forEach((el) => {
+          const windowHeight = window.innerHeight;
+          const revealTop = el.getBoundingClientRect().top;
+          const revealPoint = 120;
+
+          if (revealTop < windowHeight - revealPoint) {
+            el.classList.add("active");
+          }
+        });
+      });
+
+      /* ========================================
+PARALLAX IMAGE EFFECT
+======================================== */
+
+      window.addEventListener("scroll", () => {
+        const images = document.querySelectorAll(".project-image img");
+
+        images.forEach((img) => {
+          const speed = 0.04;
+          const yPos = window.scrollY * speed;
+
+          img.style.transform = `translateY(${yPos}px) scale(1.05)`;
+        });
+      });
+    </script>
+  </body>
+</html>

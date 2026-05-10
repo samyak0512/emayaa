@@ -130,7 +130,7 @@ HALF SCREEN MENU
         .emh-mobile-menu {
           width: 50%;
           right: -50%;
-          border-left: 1px solid rgba(255,255,255,0.08);
+          border-left: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .emh-mobile-menu.active {
@@ -558,7 +558,6 @@ FOOTER
         line-height: 1.8;
       }
 
-      
       .emh-expression-link {
         margin-top: auto;
         display: inline-flex !important;
@@ -592,7 +591,6 @@ FOOTER
         color: #d9c0ad;
         transform: translateX(6px);
       }
-
 
       /* ========================================
 RESPONSIVE
@@ -699,6 +697,368 @@ RESPONSIVE
           justify-content: center;
         }
       }
+
+      .elh-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 16px 40px;
+        background: linear-gradient(90deg, #183124 0%, #10281d 100%);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 99999;
+      }
+
+      .elh-logo img {
+        width: 260px;
+        display: block;
+      }
+
+      .elh-menu-btn {
+        width: 46px;
+        height: 46px;
+        border: none;
+        border-radius: 50%;
+        background: #ece2d7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+      }
+
+      .elh-menu-btn span {
+        width: 18px;
+        height: 2px;
+        background: #173122;
+      }
+
+      .elh-mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(16, 40, 29, 0.82);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        z-index: 999999;
+        transition: 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+        padding: 40px 50px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .elh-mobile-menu.active {
+        right: 0;
+      }
+
+      @media (min-width: 992px) {
+        .elh-mobile-menu {
+          width: 50%;
+          right: -50%;
+          border-left: 1px solid rgba(255, 255, 255, 0.08);
+        }
+      }
+
+      @media (max-width: 991px) {
+        .elh-mobile-menu {
+          width: 100%;
+          right: -100%;
+          padding: 30px 24px;
+        }
+      }
+
+      .elh-close {
+        width: 46px;
+        height: 55px;
+        border: none;
+        border-radius: 50%;
+        background: #ece2d7;
+        margin-left: auto;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .elh-close::before,
+      .elh-close::after {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 2px;
+        background: #173122;
+        left: 14px;
+        top: 26px;
+      }
+
+      .elh-close::before {
+        transform: rotate(45deg);
+      }
+
+      .elh-close::after {
+        transform: rotate(-45deg);
+      }
+
+      .elh-menu-links {
+        margin-top: 90px;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        height: 100%;
+      }
+
+      .elh-menu-links a {
+        color: white;
+        text-decoration: none;
+        font-family: "Cormorant Garamond", serif;
+        transition: 0.3s ease;
+      }
+
+      @media (min-width: 992px) {
+        .elh-menu-links a {
+          font-size: 32px;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .elh-menu-links a {
+          font-size: 38px;
+        }
+      }
+
+      .elh-menu-links a:hover {
+        color: #d9c0ad;
+        transform: translateX(10px);
+      }
+
+      .elh-expression-link {
+        margin-top: auto;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        padding: 18px 28px;
+        border-radius: 60px;
+        background: #ece2d7;
+        color: #173122 !important;
+        font-size: 16px !important;
+        font-family: "Inter", sans-serif !important;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border: 1px solid transparent;
+        transition: 0.35s ease;
+      }
+
+      .elh-expression-link:hover {
+        background: transparent;
+        border-color: #ece2d7;
+        color: #ece2d7 !important;
+        transform: translateY(-2px);
+      }
+
+      .team-card {
+        display: grid;
+        grid-template-columns: 1fr 0.95fr;
+        gap: 90px;
+        align-items: flex-start;
+      }
+
+      .team-card.reverse {
+        grid-template-columns: 0.95fr 1fr;
+      }
+
+      .team-card.reverse .content {
+        order: 2;
+      }
+
+      .team-card.reverse .image-wrapper {
+        order: 1;
+      }
+
+      .image-wrapper {
+        position: sticky;
+        top: 120px;
+      }
+
+      .content {
+        opacity: 0;
+        transform: translateY(80px);
+        transition: 1s cubic-bezier(0.17, 0.67, 0.31, 1);
+      }
+
+      .team-card.active .content {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .elh-footer-links a {
+        transition: 0.3s ease;
+      }
+
+      .elh-footer-links a:hover {
+        color: #d9c0ad;
+        transform: translateX(6px);
+      }
+
+      @media (max-width: 992px) {
+        .team-card,
+        .team-card.reverse {
+          grid-template-columns: 1fr;
+        }
+
+        .image-wrapper {
+          position: relative;
+          top: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .elh-logo img {
+          width: 220px;
+        }
+      }
+
+      body {
+        margin: 0;
+        background: #f5f4f1;
+        color: #173122;
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+      }
+
+      .team-section {
+        padding: 140px 7% 100px;
+      }
+
+      .top-heading {
+        text-align: center;
+        margin-bottom: 120px;
+      }
+
+      .top-heading .sub {
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-size: 12px;
+        color: #7b857f;
+        margin-bottom: 18px;
+      }
+
+      .top-heading h1 {
+        font-size: 72px;
+        line-height: 0.95;
+        margin-bottom: 24px;
+        font-weight: 400;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .top-heading p {
+        font-size: 18px;
+        color: #5f6662;
+      }
+
+      .team-container {
+        display: flex;
+        flex-direction: column;
+        gap: 140px;
+      }
+
+      .content h2 {
+        font-size: 52px;
+        line-height: 1;
+        margin-bottom: 16px;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .content h3 {
+        font-size: 22px;
+        margin-bottom: 28px;
+        color: #516159;
+        font-weight: 400;
+      }
+
+      .content p {
+        font-size: 17px;
+        line-height: 2;
+        color: #555;
+      }
+
+      .image-wrapper {
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .image-wrapper img {
+        width: 100%;
+        height: 820px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .elh-footer {
+        background: linear-gradient(90deg, #183124 0%, #10281d 100%);
+        padding: 70px 7%;
+      }
+
+      .elh-footer-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr;
+        gap: 70px;
+      }
+
+      .elh-footer-logo img {
+        width: 220px;
+        margin-bottom: 24px;
+      }
+
+      .elh-footer-desc,
+      .elh-footer-title,
+      .elh-footer-links a,
+      .elh-contact {
+        color: white;
+      }
+
+      .elh-footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .elh-footer-links a {
+        text-decoration: none;
+      }
+
+      .elh-contact {
+        line-height: 1.9;
+      }
+
+      .elh-social svg {
+        width: 24px;
+        fill: white;
+        margin-top: 24px;
+      }
+
+      @media (max-width: 992px) {
+        .team-card,
+        .team-card.reverse {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+
+        .image-wrapper img {
+          height: 520px;
+        }
+
+        .elh-footer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .top-heading h1 {
+          font-size: 52px;
+        }
+      }
     </style>
   </head>
 
@@ -744,149 +1104,108 @@ MOBILE MENU
     <!-- ========================================
 HERO
 ======================================== -->
+    <section class="team-section">
+      <div class="top-heading fade-up">
+        <div class="sub">Emayaa Luxury Homes</div>
 
-    <section class="projects-hero">
-      <div class="hero-top reveal">
-        <div class="hero-title">
-          <h1>
-            Our<br />
-            Projects
-          </h1>
+        <h1>THE MINDS BEHIND EMAYAA</h1>
 
-          <p>
-            Curated luxury residences crafted with timeless architecture,
-            emotional design language, and elevated living experiences.
-          </p>
-        </div>
-
-        <div class="hero-line"></div>
-      </div>
-    </section>
-
-    <!-- ========================================
-PROJECTS
-======================================== -->
-    <section class="projects">
-      <div class="projects-title reveal">
-        <!-- <h2 class="section-title">Our Projects</h2> -->
+        <p>A synergy of heritage, heart, and high-performance operations</p>
       </div>
 
-      <div class="projects-grid">
-        <!-- PROJECT 1 -->
+      <div class="team-container">
+        <!-- TEAM MEMBER 1 -->
 
-        <div class="project-card reveal">
-          <div class="project-content">
-            <div class="location">Goa • Luxury Villa</div>
+        <div class="team-card fade-up">
+          <div class="content">
+            <h2>Mr. BK Dhingra - Chairman</h2>
 
-            <h3>The Creek by Emayaa Homes</h3>
-
-            <ul class="project-features">
-              <li>Location: Moira, Goa</li>
-              <li>Plot Size~380-430 sq mtr</li>
-              <li>Built Area ~ 3500-4800 sq ft 4 Bedrooms</li>
-              <li>24X7 Security | Maintenance Service</li>
-            </ul>
+            <h3>The Foundation of Trust</h3>
 
             <p>
-              Spanning over 3,600 square meters - just under an acre - the
-              project comprises of 9 exclusive 4BHK villas. Each villa is a
-              masterpiece, featuring high ceilings, sunlit rooms, and thoughtful
-              details that exude luxury and comfort. Private gardens, serene
-              pools, and terrace bars offer spaces for relaxation and
-              celebration under the stars. Bedrooms open to balconies with
-              enchanting views, promising magical mornings.
+              With a distinguished career as a practicing Chartered Account and
+              over 25 years of mastery in the real estate sector, Mr. Dhingra
+              provides the bedrock of financial integrity upon which Emayaa is
+              built.
+              <br /><br />
+              He oversees the company's fiscal health and strategic growth,
+              ensuring that every project is backed by ironclad transparency and
+              long-term investment value.
+              <br /><br />
+              His decades of expertise serve as our guiding compass, blending
+              traditional wisdom with modern stability.
             </p>
           </div>
 
-          <div class="project-image">
-            <img src="./asset/PROJECT1.jpeg" />
+          <div class="image-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1200&auto=format&fit=crop"
+              alt=""
+            />
           </div>
         </div>
 
-        <!-- PROJECT 2 -->
+        <!-- TEAM MEMBER 2 -->
 
-        <div class="project-card reveal">
-          <div class="project-content">
-            <div class="location">Bali Inspired Residence</div>
+        <div class="team-card reverse fade-up">
+          <div class="content">
+            <h2>Ridhii Aroraa - Creative Head</h2>
 
-            <h3>Villa Poesia</h3>
-            <h6>Mansion Art Home - Where Architecture Becomes a Verse</h6>
-            <ul class="project-features">
-              <li>Location: Moira, Goa</li>
-              <li>Plot Size-1350 sq mtr</li>
-              <li>Built Area~6390 sq ft</li>
-              <li>5 Bedrooms | 24X7 Security | Maintenance Service</li>
-            </ul>
+            <h3>The Soul of the Space</h3>
+
             <p>
-              Villa Poesia is a silent, rhythmic retreat. Named after the
-              Portuguese word for "Poetry," this Mansion Art Home is designed
-              for those who seek a life that flows with intention. Here, every
-              corridor is a stanza and every view is a metaphor for the "Slow
-              Life" we champion at Emayaa. As our Creative Head's signature
-              project, Villa Poesia moves beyond construction into the realm of
-              art. We have treated the tropical Goan light as our medium,
-              ensuring the home breathes in harmony with the surrounding nature.
-              Villa Poesia isn't just a residence; it is a life, well-written.
+              A business graduate with a lifelong passion for design, Ridhii is
+              the visionary behind all different concepts of each of Emayaa's
+              Projects.
+              <br /><br />
+              As the first point of contact for our clients, she translates
+              dreams into architectural reality, leading the design
+              conceptualization and planning of every home.
+              <br /><br />
+              Beyond the aesthetic, she is the architect of our internal
+              systems, ensuring seamless communication and rigorous quarterly
+              reporting for our board of investors.
             </p>
           </div>
 
-          <div class="project-image">
-            <img src="./asset/PROJECT2.jpeg" />
+          <div class="image-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop"
+              alt=""
+            />
           </div>
         </div>
 
-        <!-- project 3 -->
-        <div class="project-card reveal">
-          <div class="project-content">
-            <div class="location">Goa • Luxury Villa</div>
+        <!-- TEAM MEMBER 3 -->
 
-            <h3>Art Home</h3>
+        <div class="team-card fade-up">
+          <div class="content">
+            <h2>Prathap Arora - Managing Director</h2>
 
-            <ul class="project-features">
-              <li>Location: Kasauli, Himachal Pradesh</li>
-              <li>Type: Premium High-Rise Apartments</li>
-            </ul>
+            <h3>The Engine of Execution</h3>
 
             <p>
-              A landmark high-rise offering panoramic views, world-class
-              amenities, and investment potential. Infinity-edge swimming pool
-              Clubhouse & wellness center 24/7 security & concierge High
-              appreciation location
+              Precision, negotiation, and on-ground excellence define Prathap's
+              leadership at Emayaa.
+              <br /><br />
+              From the initial acquisition of prime land in Goa and Kasauli to
+              the final brick laid on-site, he manages the day-to-day pulse of
+              our operations.
+              <br /><br />
+              His expertise lies in navigating complex negotiations, managing
+              our network of elite brokers, and ensuring that our construction
+              standards meet the "Emayaa Benchmark."
+              <br /><br />
+              He turns ambitious blueprints into tangible, high-quality
+              sanctuaries.
             </p>
           </div>
 
-          <div class="project-image">
-            <img src="./asset/PROJECT3.jpeg" />
-          </div>
-        </div>
-
-        <!-- PROJECT 2 -->
-
-        <div class="project-card reveal">
-          <div class="project-content">
-            <div class="location">Bali Inspired Residence</div>
-
-            <h3>Apartments</h3>
-            <h6>Mansion Art Home - Where Architecture Becomes a Verse</h6>
-            <ul class="project-features">
-              <li>Location: Arpora, Goa</li>
-              <li>Type: Premium High-Rise Apartments</li>
-            </ul>
-            <p>
-              Villa Poesia is a silent, rhythmic retreat. Named after the
-              Portuguese word for "Poetry," this Mansion Art Home is designed
-              for those who seek a life that flows with intention. Here, every
-              corridor is a stanza and every view is a metaphor for the "Slow
-              Life" we champion at Emayaa. As our Creative Head's signature
-              project, Villa Poesia moves beyond construction into the realm of
-              art. We have treated the tropical Goan light as our medium,
-              ensuring the home breathes in harmony with the surrounding nature.
-              Villa Poesia isn't just a residence; it is a life, well-written.
-            </p>
-          </div>
-
-          <div class="project-image">
-            <img src="./asset/PROJECT5.jpeg" />
+          <div class="image-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop"
+              alt=""
+            />
           </div>
         </div>
       </div>
