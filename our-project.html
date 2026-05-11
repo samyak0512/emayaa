@@ -377,7 +377,7 @@ PARALLAX BG
       }
 
       .project-image {
-        border-radius: 5px;
+        border-radius: 30px;
         position: relative;
         overflow: hidden;
         height: auto;
@@ -750,6 +750,15 @@ RESPONSIVE
       }
 
 
+
+      .project-image img {
+        transform: none !important;
+      }
+
+      .project-card:hover .project-image img {
+        transform: scale(1.05) !important;
+      }
+
 </style>
   </head>
 
@@ -1031,21 +1040,6 @@ SCROLL REVEAL
           if (revealTop < windowHeight - revealPoint) {
             el.classList.add("active");
           }
-        });
-      });
-
-      /* ========================================
-PARALLAX IMAGE EFFECT
-======================================== */
-
-      window.addEventListener("scroll", () => {
-        const images = document.querySelectorAll(".project-image img");
-
-        images.forEach((img) => {
-          const speed = 0.04;
-          const yPos = window.scrollY * speed;
-
-          img.style.transform = `translateY(${yPos}px) scale(1.05)`;
         });
       });
     
