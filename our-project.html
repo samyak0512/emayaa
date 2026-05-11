@@ -43,7 +43,7 @@ GLOBAL
 ======================================== */
 
       section {
-        padding: 120px 7%;
+        padding: 70px 7%;
       }
 
       img {
@@ -217,8 +217,8 @@ PAGE HERO
 ======================================== */
 
       .projects-hero {
-        padding-top: 140px;
-        padding-bottom: 40px;
+        padding-top: 110px;
+        padding-bottom: 10px;
       }
 
       .hero-top {
@@ -251,193 +251,7 @@ PAGE HERO
 PROJECT LIST
 ======================================== */
 
-      .projects-wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 170px;
-      }
-
-      .project-card {
-        display: grid;
-        grid-template-columns: 0.95fr 1.1fr;
-        gap: 90px;
-        align-items: center;
-        position: relative;
-      }
-
-      .project-card.reverse {
-        direction: rtl;
-      }
-
-      .project-card.reverse .project-content {
-        direction: ltr;
-      }
-
-      /* ========================================
-CONTENT
-======================================== */
-
-      .project-tag {
-        display: inline-block;
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        color: #7f8a84;
-        margin-bottom: 20px;
-      }
-
-      .project-content h2 {
-        font-size: 64px;
-        line-height: 0.95;
-        margin-bottom: 25px;
-      }
-
-      .project-subtitle {
-        font-size: 18px;
-        color: #58665f;
-        margin-bottom: 30px;
-        font-family: "Cormorant Garamond", serif;
-      }
-
-      .project-details {
-        margin-bottom: 35px;
-      }
-
-      .project-details p {
-        color: var(--text);
-        line-height: 2;
-        margin-bottom: 12px;
-        font-size: 15px;
-      }
-
-      .project-description {
-        margin-bottom: 35px;
-      }
-
-      .project-description p {
-        color: var(--text);
-        line-height: 2.1;
-        font-size: 16px;
-      }
-
-      .project-features {
-        list-style: none;
-        margin-bottom: 40px;
-      }
-
-      .project-features li {
-        margin-bottom: 14px;
-        color: #58665f;
-        position: relative;
-        padding-left: 24px;
-        line-height: 1.8;
-      }
-
-      .project-features li::before {
-        content: "•";
-        position: absolute;
-        left: 0;
-        top: 0;
-        color: var(--green);
-        font-size: 18px;
-      }
-
-      .project-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 14px;
-        padding: 18px 34px;
-        border: 1px solid var(--green);
-        color: var(--green);
-        text-decoration: none;
-        position: relative;
-        overflow: hidden;
-        transition: 0.4s ease;
-        letter-spacing: 1px;
-      }
-
-      .project-btn span {
-        position: relative;
-        z-index: 2;
-      }
-
-      .project-btn::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: var(--green);
-        transform: translateX(-100%);
-        transition: 0.5s ease;
-      }
-
-      .project-btn:hover::before {
-        transform: translateX(0);
-      }
-
-      .project-btn:hover {
-        color: white;
-      }
-
-      /* ========================================
-IMAGE
-======================================== */
-
-      .project-image {
-        position: relative;
-        overflow: hidden;
-        height: 820px;
-        cursor: pointer;
-      }
-
-      .project-image::before {
-        content: "";
-        position: absolute;
-        top: -150%;
-        left: -40%;
-        width: 60%;
-        height: 400%;
-        background: rgba(255, 255, 255, 0.18);
-        transform: rotate(25deg);
-        transition: 1.3s;
-        z-index: 3;
-      }
-
-      .project-card:hover .project-image::before {
-        left: 130%;
-      }
-
-      .project-image img {
-        height: 100%;
-        object-fit: cover;
-        transition: 1.2s ease;
-      }
-
-      .project-card:hover .project-image img {
-        transform: scale(1.08);
-      }
-
-      .project-image::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.25), transparent);
-        z-index: 1;
-      }
-
-      .image-label {
-        position: absolute;
-        left: 30px;
-        bottom: 30px;
-        z-index: 4;
-        backdrop-filter: blur(12px);
-        background: rgba(255, 255, 255, 0.12);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        color: white;
-        padding: 14px 24px;
-        font-size: 13px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-      }
+      
 
       /* ========================================
 FLOATING ELEMENT
@@ -504,6 +318,136 @@ PARALLAX BG
         top: 0;
         right: -300px;
       }
+
+      
+      .project-tagline {
+        font-size: 22px;
+        line-height: 1.5;
+        color: #000;
+        margin: 18px 0 26px;
+        font-weight: 700;
+        font-family: "Inter", sans-serif;
+      }
+
+      .projects-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 140px;
+      }
+
+      .project-card {
+        position: relative;
+        overflow: hidden;
+        padding: 32px;
+        border-radius: 40px;
+        background: rgba(255,255,255,0.58);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(24,49,36,0.08);
+        transition: 0.7s ease;
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        gap: 70px;
+        align-items: center;
+      }
+
+      .project-card:nth-child(even) {
+        direction: rtl;
+      }
+
+      .project-card:nth-child(even) .project-content {
+        direction: ltr;
+      }
+
+      .project-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top right, rgba(24,49,36,0.12), transparent 40%);
+        opacity: 0;
+        transition: 0.6s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 35px 80px rgba(0,0,0,0.08);
+      }
+
+      .project-card:hover::before {
+        opacity: 1;
+      }
+
+      .project-image {
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        height: auto;
+      }
+
+      .project-image img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        height: auto;
+        min-height: 100%;
+        object-fit: cover;
+        transition: 1.2s ease;
+      }
+
+      .project-card:hover .project-image img {
+        transform: scale(1.08);
+      }
+
+      .project-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.22), transparent);
+        opacity: 0;
+        transition: 0.6s ease;
+      }
+
+      .project-card:hover .project-image::after {
+        opacity: 1;
+      }
+
+      .project-content h3 {
+        font-size: 52px;
+        margin-bottom: 25px;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .location {
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #7f7f7f;
+        margin-bottom: 20px;
+      }
+
+      .project-content p {
+        color: #686868;
+        line-height: 2;
+        font-size: 16px;
+        margin-bottom: 30px;
+      }
+
+      .project-features {
+        list-style: none;
+      }
+
+      .project-features li {
+        margin-bottom: 12px;
+        color: #51635b;
+        position: relative;
+        padding-left: 22px;
+      }
+
+      .project-features li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #183124;
+      }
+
 
       /* ========================================
 FOOTER
@@ -657,7 +601,15 @@ RESPONSIVE
         }
 
         .project-image {
-          height: 480px;
+          width: calc(100% + 24px);
+          margin-left: -12px;
+          border-radius: 24px;
+        }
+
+        .project-image img {
+          aspect-ratio: 1 / 1;
+          width: 100%;
+          height: auto;
         }
 
         .projects-wrapper {
@@ -699,7 +651,106 @@ RESPONSIVE
           justify-content: center;
         }
       }
-    </style>
+    
+      @media (max-width: 768px) {
+
+        .project-card {
+          padding: 24px;
+          gap: 34px;
+        }
+
+        .project-image {
+          width: calc(100% + 30px);
+          margin-left: -15px;
+        }
+
+        .project-image img {
+          border-radius: 24px;
+        }
+
+      }
+
+
+      .project-card {
+        text-align: center;
+      }
+
+      .project-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .project-features {
+        display: inline-block;
+        text-align: left;
+      }
+
+      .location {
+        text-align: center;
+      }
+
+      .project-content p {
+        max-width: 760px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-top {
+        margin-bottom: 40px !important;
+      }
+
+      .projects-grid {
+        gap: 90px !important;
+      }
+
+
+
+      .hero-top {
+        flex-direction: column;
+        align-items: center !important;
+        text-align: center;
+      }
+
+      .hero-title p {
+        margin: auto;
+        text-align: center;
+      }
+
+      .hero-line {
+        margin-top: 10px;
+      }
+
+
+
+      .project-card {
+        text-align: left !important;
+      }
+
+      .project-content {
+        align-items: flex-start !important;
+        text-align: left !important;
+      }
+
+      .project-content p {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+
+      .location {
+        text-align: left !important;
+      }
+
+
+
+      .hero-top {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+
+</style>
   </head>
 
   <body>
@@ -746,12 +797,9 @@ HERO
 ======================================== -->
 
     <section class="projects-hero">
-      <div class="hero-top reveal">
+      <div class="hero-top active">
         <div class="hero-title">
-          <h1>
-            Our<br />
-            Projects
-          </h1>
+          <h1>Our Projects</h1>
 
           <p>
             Curated luxury residences crafted with timeless architecture,
@@ -810,7 +858,7 @@ PROJECTS
             <div class="location">Bali Inspired Residence</div>
 
             <h3>Villa Poesia</h3>
-            <h6>Mansion Art Home - Where Architecture Becomes a Verse</h6>
+            <div class="project-tagline">Mansion Art Home - Where Architecture Becomes a Verse</div>
             <ul class="project-features">
               <li>Location: Moira, Goa</li>
               <li>Plot Size-1350 sq mtr</li>
@@ -867,7 +915,7 @@ PROJECTS
             <div class="location">Bali Inspired Residence</div>
 
             <h3>Apartments</h3>
-            <h6>Mansion Art Home - Where Architecture Becomes a Verse</h6>
+            <div class="project-tagline">Mansion Art Home - Where Architecture Becomes a Verse</div>
             <ul class="project-features">
               <li>Location: Arpora, Goa</li>
               <li>Type: Premium High-Rise Apartments</li>
@@ -1000,6 +1048,53 @@ PARALLAX IMAGE EFFECT
           img.style.transform = `translateY(${yPos}px) scale(1.05)`;
         });
       });
-    </script>
+    
+      /* ========================================
+ADVANCED PROJECT ANIMATION
+======================================== */
+
+      const projectCards = document.querySelectorAll(".project-card");
+
+      const projectObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0px) scale(1)";
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      projectCards.forEach((card, index) => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(120px) scale(0.96)";
+        card.style.transition =
+          "all 1s cubic-bezier(0.16, 1, 0.3, 1)";
+        card.style.transitionDelay = `${index * 0.12}s`;
+
+        projectObserver.observe(card);
+
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const rotateY = ((x / rect.width) - 0.5) * 8;
+          const rotateX = ((y / rect.height) - 0.5) * -8;
+
+          card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform =
+            "perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0px)";
+        });
+      });
+
+
+</script>
   </body>
 </html>
