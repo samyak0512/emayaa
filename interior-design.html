@@ -1,0 +1,1444 @@
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Emayaa Luxury Homes</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ========================================
+ROOT
+======================================== */
+
+      :root {
+        --bg: #f5f5f2;
+        --green: #183124;
+        --green-dark: #10281d;
+        --text: #5f5f5f;
+        --white: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--green);
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+      }
+
+      /* ========================================
+HEADER
+======================================== */
+
+      .emh-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 16px 40px;
+        background: linear-gradient(90deg, #183124 0%, #10281d 100%);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 99999;
+      }
+
+      .emh-logo img {
+        width: 280px;
+        display: block;
+      }
+
+      /* MENU BUTTON */
+
+      .emh-menu-btn {
+        width: 46px;
+        height: 46px;
+        border: none;
+        border-radius: 50%;
+        background: #ece2d7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+
+      .emh-menu-btn:hover {
+        transform: scale(1.05);
+      }
+
+      .emh-menu-btn span {
+        width: 18px;
+        height: 2px;
+        background: #173122;
+      }
+
+      /* ========================================
+HALF SCREEN MENU
+======================================== */
+
+      .emh-mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(16, 40, 29, 0.82);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        z-index: 999999;
+        transition: 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+        padding: 40px 50px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .emh-mobile-menu.active {
+        right: 0;
+      }
+
+      @media (min-width: 992px) {
+        .emh-mobile-menu {
+          width: 50%;
+          right: -50%;
+          border-left: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .emh-mobile-menu.active {
+          right: 0;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .emh-mobile-menu {
+          width: 100%;
+          right: -100%;
+          padding: 30px 24px;
+        }
+
+        .emh-mobile-menu.active {
+          right: 0;
+        }
+      }
+
+      .emh-close {
+        width: 46px;
+        height: 55px;
+        border: none;
+        border-radius: 50%;
+        background: #ece2d7;
+        margin-left: auto;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .emh-close::before,
+      .emh-close::after {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 2px;
+        background: #173122;
+        left: 14px;
+        top: 26px;
+      }
+
+      .emh-close::before {
+        transform: rotate(45deg);
+      }
+
+      .emh-close::after {
+        transform: rotate(-45deg);
+      }
+
+      .emh-menu-links {
+        margin-top: 90px;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        height: 100%;
+      }
+
+      .emh-menu-links a {
+        color: white;
+        text-decoration: none;
+        font-family: "Cormorant Garamond", serif;
+        transition: 0.35s ease;
+      }
+
+      @media (min-width: 992px) {
+        .emh-menu-links a {
+          font-size: 32px;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .emh-menu-links a {
+          font-size: 38px;
+        }
+      }
+
+      .emh-menu-links a:hover {
+        color: #d7bda9;
+        transform: translateX(10px);
+      }
+
+      /* ========================================
+GENERAL SECTION
+======================================== */
+
+      section {
+        padding: 110px 7%;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+      }
+
+      .section-title {
+        font-size: 72px;
+        line-height: 1;
+        margin-bottom: 20px;
+      }
+
+      .section-subtitle {
+        font-size: 28px;
+        line-height: 1.4;
+        color: #46574f;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      /* ========================================
+HERO SLIDER
+======================================== */
+
+      .hero {
+        padding: 0;
+        margin-top: 78px;
+      }
+
+      .hero-slider {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .hero-slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: 1s ease;
+      }
+
+      .hero-slide.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .hero-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.38);
+      }
+
+      .hero-content {
+        position: absolute;
+        top: 50%;
+        left: 7%;
+        transform: translateY(-50%);
+        max-width: 700px;
+        z-index: 2;
+      }
+
+      .hero-content h1 {
+        color: white;
+        font-size: 92px;
+        line-height: 1;
+        margin-bottom: 20px;
+      }
+
+      .hero-content p {
+        color: white;
+        font-size: 42px;
+        line-height: 1.2;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .hero-dots {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 12px;
+        z-index: 5;
+      }
+
+      .hero-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+      }
+
+      .hero-dot.active {
+        background: white;
+      }
+
+      /* ========================================
+ABOUT
+======================================== */
+
+      .about {
+        text-align: center;
+      }
+
+      .about h2 {
+        font-size: 58px;
+        margin-bottom: 30px;
+      }
+
+      .about p {
+        max-width: 900px;
+        margin: auto;
+        line-height: 2;
+        color: var(--text);
+        font-size: 17px;
+      }
+
+      /* ========================================
+PROJECTS
+======================================== */
+
+      .projects-title {
+        margin-bottom: 90px;
+      }
+
+      .projects-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 140px;
+      }
+
+      .project-card {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        gap: 70px;
+        align-items: center;
+      }
+
+      .project-card:nth-child(even) {
+        direction: rtl;
+      }
+
+      .project-card:nth-child(even) .project-content {
+        direction: ltr;
+      }
+
+      .project-content h3 {
+        font-size: 52px;
+        margin-bottom: 25px;
+      }
+
+      .location {
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #7f7f7f;
+        margin-bottom: 20px;
+      }
+
+      .project-content p {
+        color: var(--text);
+        line-height: 2;
+        font-size: 16px;
+        margin-bottom: 30px;
+      }
+
+      .project-features {
+        list-style: none;
+      }
+
+      .project-features li {
+        margin-bottom: 12px;
+        color: #51635b;
+        position: relative;
+        padding-left: 22px;
+      }
+
+      .project-features li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--green);
+      }
+
+      .project-image {
+        overflow: hidden;
+      }
+
+      .project-image img {
+        width: 100%;
+        height: 760px;
+        object-fit: cover;
+        transition: 1.2s ease;
+      }
+
+      .project-card:hover .project-image img {
+        transform: scale(1.08);
+      }
+
+      
+      .project-tagline {
+        font-size: 22px;
+        line-height: 1.5;
+        color: #000;
+        margin: 18px 0 26px;
+        font-weight: 700;
+        font-family: "Inter", sans-serif;
+      }
+
+      .project-interest-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 24px;
+        padding: 16px 30px;
+        border-radius: 60px;
+        text-decoration: none;
+        background: linear-gradient(135deg, #183124, #2f5b46);
+        color: white;
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: 0.4s ease;
+        box-shadow: 0 15px 35px rgba(24, 49, 36, 0.18);
+      }
+
+      .project-interest-btn:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(24, 49, 36, 0.28);
+      }
+
+      .project-card {
+        position: relative;
+        overflow: hidden;
+        padding: 50px;
+        border-radius: 40px;
+        background: rgba(255,255,255,0.58);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(24,49,36,0.08);
+        transition: 0.7s ease;
+      }
+
+      .project-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top right, rgba(24,49,36,0.12), transparent 40%);
+        opacity: 0;
+        transition: 0.6s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 35px 80px rgba(0,0,0,0.08);
+      }
+
+      .project-card:hover::before {
+        opacity: 1;
+      }
+
+      .project-image {
+        border-radius: 0px;
+        position: relative;
+      }
+
+      .project-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.22), transparent);
+        opacity: 0;
+        transition: 0.6s ease;
+      }
+
+      .project-card:hover .project-image::after {
+        opacity: 1;
+      }
+
+      .hero-slide picture,
+      .hero-slide picture img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+
+      /* ========================================
+GALLERY
+======================================== */
+
+      .gallery-top {
+        text-align: center;
+        margin-bottom: 70px;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 22px;
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 340px;
+        object-fit: cover;
+        transition: 0.8s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.35);
+        opacity: 0;
+        transition: 0.4s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .gallery-overlay span {
+        color: white;
+        font-size: 20px;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+
+      
+      .gallery-buttons {
+        margin-top: 55px;
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .gallery-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 34px;
+        border: 1px solid #183124;
+        color: #183124;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 14px;
+        transition: 0.4s ease;
+        background: transparent;
+      }
+
+      .gallery-btn:hover {
+        background: #183124;
+        color: white;
+        transform: translateY(-3px);
+      }
+
+
+      /* ========================================
+MESSAGE
+======================================== */
+
+      .message {
+        text-align: center;
+      }
+
+      .message-box {
+        max-width: 900px;
+        margin: auto;
+        padding: 80px 60px;
+        background: white;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+      }
+
+      .message-box h2 {
+        font-size: 54px;
+        margin-bottom: 25px;
+      }
+
+      .message-box p {
+        color: var(--text);
+        line-height: 2;
+        font-size: 17px;
+      }
+
+      /* ========================================
+CTA
+======================================== */
+
+      .cta {
+        padding: 110px 0 0;
+      }
+
+      .cta-banner {
+        position: relative;
+        width: 100%;
+        height: 720px;
+        overflow: hidden;
+      }
+
+      .cta-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .cta-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+      .cta-content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 30px;
+      }
+
+      .cta-content h2 {
+        color: white;
+        font-size: 74px;
+        margin-bottom: 20px;
+      }
+
+      .cta-content p {
+        color: white;
+        max-width: 700px;
+        line-height: 1.8;
+        margin-bottom: 35px;
+      }
+
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px 34px;
+        border: 1px solid white;
+        color: white;
+        text-decoration: none;
+        transition: 0.4s ease;
+        font-size: 15px;
+      }
+
+      .cta-btn:hover {
+        background: white;
+        color: var(--green);
+      }
+
+      
+      .hero-cta-btn,
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px 42px;
+        margin-top: 34px;
+        border: 1px solid rgba(255,255,255,0.8);
+        color: white;
+        text-decoration: none;
+        transition: all 0.45s ease;
+        font-size: 15px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(12px);
+        border-radius: 2px;
+        min-width: 320px;
+      }
+
+      .hero-cta-btn:hover,
+      .cta-btn:hover {
+        background: white;
+        color: var(--green);
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      }
+
+
+      /* ========================================
+SCROLL ANIMATION
+======================================== */
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(80px);
+        transition: 1s cubic-bezier(0.17, 0.67, 0.32, 1);
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ========================================
+LIGHTBOX
+======================================== */
+
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.4s ease;
+        z-index: 999;
+      }
+
+      .lightbox.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+      }
+
+      /* ========================================
+FOOTER
+======================================== */
+
+      .emf-footer {
+        background: linear-gradient(90deg, #183124 0%, #10281d 100%);
+        padding: 70px 7%;
+      }
+
+      .emf-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr;
+        gap: 70px;
+      }
+
+      .emf-logo img {
+        width: 240px;
+        margin-bottom: 24px;
+      }
+
+      .emf-desc {
+        color: white;
+        line-height: 2;
+        max-width: 340px;
+      }
+
+      .emf-title {
+        color: #c7c7c7;
+        margin-bottom: 20px;
+        font-weight: 400;
+        text-decoration: none;
+      }
+
+      .emf-links {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .emf-links a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .emf-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        color: white;
+        line-height: 1.8;
+      }
+
+      
+      .emh-expression-link {
+        margin-top: auto;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        padding: 18px 28px;
+        border-radius: 60px;
+        background: #ece2d7;
+        color: #173122 !important;
+        font-size: 16px !important;
+        font-family: "Inter", sans-serif !important;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border: 1px solid transparent;
+        transition: 0.35s ease;
+      }
+
+      .emh-expression-link:hover {
+        background: transparent;
+        border-color: #ece2d7;
+        color: #ece2d7 !important;
+        transform: translateY(-2px);
+      }
+
+      .about-icon {
+        text-align: center;
+        margin-bottom: 34px;
+
+      }
+
+      .about-icon img {
+        width: 95px;
+        margin: auto;
+        scale: 2;
+      }
+
+      .emf-links a {
+        transition: 0.3s ease;
+      }
+
+      .emf-links a:hover {
+        color: #d9c0ad;
+        transform: translateX(6px);
+      }
+
+
+      /* ========================================
+RESPONSIVE
+======================================== */
+
+      @media (max-width: 1200px) {
+        .gallery-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 992px) {
+        section {
+          padding: 90px 5%;
+        }
+
+        .project-card,
+        .project-card:nth-child(even) {
+          grid-template-columns: 1fr;
+          direction: ltr;
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .emf-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .emh-header {
+          padding: 14px 18px;
+        }
+
+        .emh-logo img {
+          width: 220px;
+        }
+
+        .hero {
+          margin-top: 68px;
+        }
+
+        .hero-slider {
+          height: 85vh;
+        }
+
+        .hero-content {
+          left: 30px;
+          right: 30px;
+        }
+
+        .hero-content h1 {
+          font-size: 52px;
+        }
+
+        .hero-content p {
+          font-size: 28px;
+        }
+
+        .about h2 {
+          font-size: 42px;
+        }
+
+        .section-title {
+          font-size: 46px;
+        }
+
+        .project-content h3 {
+          font-size: 38px;
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 14px;
+        }
+
+        .gallery-item img {
+          height: 180px;
+        }
+
+        .gallery-buttons {
+          flex-direction: column;
+          align-items: center;
+          gap: 16px;
+        }
+
+        .gallery-btn {
+          width: 100%;
+          max-width: 320px;
+        }
+
+        .message-box {
+          padding: 50px 30px;
+        }
+
+        .message-box h2 {
+          font-size: 40px;
+        }
+
+        .cta-content h2 {
+          font-size: 42px;
+        }
+
+        .cta-banner {
+          height: 520px;
+        }
+
+        .emh-menu-links {
+          margin-top: 90px;
+        }
+
+        .emh-menu-links a {
+          font-size: 36px;
+        }
+
+        .emf-footer {
+          padding: 50px 22px;
+        }
+
+        .emf-logo img {
+          width: 190px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-content h1 {
+          font-size: 42px;
+        }
+
+        .hero-content p {
+          font-size: 22px;
+        }
+
+        .section-title {
+          font-size: 38px;
+        }
+
+        .project-content h3 {
+          font-size: 32px;
+        }
+
+        .project-image img {
+          height: 420px;
+        }
+
+        .cta-content h2 {
+          font-size: 34px;
+        }
+      }
+    </style>
+  
+<style>
+.gallery-page {
+  padding: 140px 7% 100px;
+  background: #f5f5f2;
+}
+
+.gallery-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.gallery-header h1 {
+  font-size: 72px;
+  color: #183124;
+  margin-bottom: 20px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.gallery-header p {
+  max-width: 800px;
+  margin: auto;
+  color: #5f5f5f;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.custom-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.custom-gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0px;
+  background: white;
+}
+
+.custom-gallery-item img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  transition: 0.7s ease;
+  display: block;
+}
+
+.custom-gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+.custom-gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+  opacity: 0;
+  transition: 0.4s ease;
+  display: flex;
+  align-items: end;
+  padding: 24px;
+}
+
+.custom-gallery-item:hover .custom-gallery-overlay {
+  opacity: 1;
+}
+
+.custom-gallery-overlay span {
+  color: white;
+  font-size: 24px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+@media (max-width: 768px) {
+  .gallery-page {
+    padding: 120px 5% 70px;
+  }
+
+  .gallery-header h1 {
+    font-size: 48px;
+  }
+
+  .custom-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .custom-gallery-item img {
+    height: 180px;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<header class="emh-header">
+      <a href="./home.html" class="emh-logo">
+        <img src="./ew (1).png" alt="Emayaa Luxury Homes" />
+      </a>
+
+      <button class="emh-menu-btn" id="emhOpenMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <!-- ========================================
+FULLSCREEN MENU
+======================================== -->
+
+    <div class="emh-mobile-menu" id="emhMobileMenu">
+      <button class="emh-close" id="emhCloseMenu"></button>
+
+      <div class="emh-menu-links">
+        <a href="./home.html">Home</a>
+        <a href="./brand-story.html">Our Brand Story</a>
+        <a href="./our-project.html">Our Projects</a>
+        <a href="./teams.html">Meet The Team</a>
+        <a href="./contact.html">Contact Us</a>
+
+
+        <a href="./expression.html" class="emh-expression-link">
+          Expression Of Interest
+        </a>
+      </div>
+    </div>
+
+<section class="gallery-page">
+  <div class="gallery-header">
+    <h1>Interior Designs</h1>
+    <p>
+      Explore curated luxury interior designs inspirations crafted with timeless elegance,
+      artistic detailing, and refined architectural aesthetics.
+    </p>
+  </div>
+
+  <div class="custom-gallery-grid">
+    
+        <div class="custom-gallery-item">
+          <img src="./asset/interior/INTERIOR (1).png" alt="Interior Designs 1">
+          <div class="custom-gallery-overlay">
+          </div>
+        </div>
+
+        <div class="custom-gallery-item">
+          <img src="./asset/interior/INTERIOR (2).png" alt="Interior Designs 1">
+          <div class="custom-gallery-overlay">
+          </div>
+        </div>
+
+        <div class="custom-gallery-item">
+          <img src="./asset/interior/INTERIOR (3).png" alt="Interior Designs 1">
+          <div class="custom-gallery-overlay">
+          </div>
+        </div>
+
+        <div class="custom-gallery-item">
+          <img src="./asset/interior/INTERIOR (4).png" alt="Interior Designs 1">
+          <div class="custom-gallery-overlay">
+          </div>
+        </div>
+
+        <div class="custom-gallery-item">
+          <img src="./asset/interior/INTERIOR (5).png" alt="Interior Designs 1">
+          <div class="custom-gallery-overlay">
+          </div>
+        </div>
+
+        <div class="custom-gallery-item">
+          <img src="./asset/interior/INTERIOR (6).png" alt="Interior Designs 1">
+          <div class="custom-gallery-overlay">
+          </div>
+        </div>
+
+        <div class="custom-gallery-item">
+          <img src="./asset/interior/INTERIOR (7).png" alt="Interior Designs 1">
+          <div class="custom-gallery-overlay">
+          </div>
+        </div>
+
+        <div class="custom-gallery-item">
+          <img src="./asset/interior/INTERIOR (8).png" alt="Interior Designs 1">
+          <div class="custom-gallery-overlay">
+          </div>
+        </div>
+
+        <div class="custom-gallery-item">
+          <img src="./asset/interior/INTERIOR (9).png" alt="Interior Designs 1">
+          <div class="custom-gallery-overlay">
+          </div>
+        </div>
+
+        <div class="custom-gallery-item">
+          <img src="./asset/interior/INTERIOR (10).png" alt="Interior Designs 1">
+          <div class="custom-gallery-overlay">
+          </div>
+        </div>
+
+        <div class="custom-gallery-item">
+          <img src="./asset/interior/INTERIOR (11).png" alt="Interior Designs 1">
+          <div class="custom-gallery-overlay">
+          </div>
+        </div>
+
+        <div class="custom-gallery-item">
+          <img src="./asset/interior/INTERIOR (12).png" alt="Interior Designs 1">
+          <div class="custom-gallery-overlay">
+          </div>
+        </div>
+
+        <div class="custom-gallery-item">
+          <img src="./asset/interior/INTERIOR (13).png" alt="Interior Designs 1">
+          <div class="custom-gallery-overlay">
+          </div>
+        </div>
+
+        <div class="custom-gallery-item">
+          <img src="./asset/interior/INTERIOR (14).png" alt="Interior Designs 1">
+          <div class="custom-gallery-overlay">
+          </div>
+        </div>
+
+        <div class="custom-gallery-item">
+          <img src="./asset/interior/INTERIOR (15).png" alt="Interior Designs 1">
+          <div class="custom-gallery-overlay">
+          </div>
+        </div>
+
+        <div class="custom-gallery-item">
+          <img src="./asset/interior/INTERIOR (16).png" alt="Interior Designs 1">
+          <div class="custom-gallery-overlay">
+          </div>
+        </div>
+
+        
+
+  </div>
+</section>
+
+<footer class="emf-footer">
+      <div class="emf-grid">
+        <div>
+          <div class="emf-logo">
+            <img src="./ew (1).png" alt="" />
+          </div>
+
+          <p class="emf-desc">
+            Emayaa Luxury Homes is dedicated to crafting refined living spaces
+            that blend elegance, comfort, and thoughtful design
+          </p>
+        </div>
+
+        <div>
+          <h3 class="emf-title">Quick Links</h3>
+
+          <div class="emf-links">
+            <a href="./home.html">Home</a>
+            <a href="./brand-story.html">Our Brand Story</a>
+            <a href="./our-project.html">Our Projects</a>
+            <a href="./teams.html">Meet The Team</a>
+            <a href="./contact.html">Contact Us</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="emf-title">Contact Us</h3>
+
+          <div class="emf-contact">
+            <div>+91-9318988776</div>
+
+            <div>info@emayaaluxuryhomes.com</div>
+
+            <div>
+              F -6/5 , Vasant Vihar<br />
+              New Delhi - 110057
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+<script>
+      /* ========================================
+HEADER MENU
+======================================== */
+
+      const emhMenu = document.getElementById("emhMobileMenu");
+      const emhOpen = document.getElementById("emhOpenMenu");
+      const emhClose = document.getElementById("emhCloseMenu");
+
+      emhOpen.addEventListener("click", () => {
+        emhMenu.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+
+      emhClose.addEventListener("click", () => {
+        emhMenu.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          emhMenu.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+      });
+
+      /* ========================================
+HERO SLIDER
+======================================== */
+
+      const heroSlides = document.querySelectorAll(".hero-slide");
+      const heroDots = document.querySelectorAll(".hero-dot");
+
+      let heroIndex = 0;
+
+      function showHeroSlide(index) {
+        heroSlides.forEach((slide) => {
+          slide.classList.remove("active");
+        });
+
+        heroDots.forEach((dot) => {
+          dot.classList.remove("active");
+        });
+
+        heroSlides[index].classList.add("active");
+        heroDots[index].classList.add("active");
+      }
+
+      function nextHeroSlide() {
+        heroIndex++;
+
+        if (heroIndex >= heroSlides.length) {
+          heroIndex = 0;
+        }
+
+        showHeroSlide(heroIndex);
+      }
+
+      setInterval(nextHeroSlide, 5000);
+
+      heroDots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          heroIndex = index;
+
+          showHeroSlide(heroIndex);
+        });
+      });
+
+      /* ========================================
+SCROLL REVEAL
+======================================== */
+
+      const reveals = document.querySelectorAll(".reveal");
+
+      window.addEventListener("scroll", () => {
+        reveals.forEach((el) => {
+          const windowHeight = window.innerHeight;
+          const revealTop = el.getBoundingClientRect().top;
+
+          if (revealTop < windowHeight - 120) {
+            el.classList.add("active");
+          }
+        });
+      });
+
+      /* ========================================
+LIGHTBOX
+======================================== */
+
+      const galleryItems = document.querySelectorAll(".gallery-item img");
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+
+      galleryItems.forEach((img) => {
+        img.addEventListener("click", () => {
+          lightbox.classList.add("active");
+          lightboxImg.src = img.src;
+        });
+      });
+
+      lightbox.addEventListener("click", () => {
+        lightbox.classList.remove("active");
+      });
+        
+      /* ========================================
+ADVANCED PROJECT ANIMATION
+======================================== */
+
+      const projectCards = document.querySelectorAll(".project-card");
+
+      const projectObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0px) scale(1)";
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      projectCards.forEach((card, index) => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(120px) scale(0.96)";
+        card.style.transition =
+          "all 1s cubic-bezier(0.16, 1, 0.3, 1)";
+        card.style.transitionDelay = `${index * 0.12}s`;
+
+        projectObserver.observe(card);
+
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const rotateY = ((x / rect.width) - 0.5) * 8;
+          const rotateX = ((y / rect.height) - 0.5) * -8;
+
+          card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform =
+            "perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0px)";
+        });
+      });
+
+
+    </script>
+
+</body>
+</html>

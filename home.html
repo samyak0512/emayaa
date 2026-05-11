@@ -418,6 +418,93 @@ PROJECTS
         transform: scale(1.08);
       }
 
+      
+      .project-tagline {
+        font-size: 22px;
+        line-height: 1.5;
+        color: #000;
+        margin: 18px 0 26px;
+        font-weight: 700;
+        font-family: "Inter", sans-serif;
+      }
+
+      .project-interest-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 24px;
+        padding: 16px 30px;
+        border-radius: 60px;
+        text-decoration: none;
+        background: linear-gradient(135deg, #183124, #2f5b46);
+        color: white;
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: 0.4s ease;
+        box-shadow: 0 15px 35px rgba(24, 49, 36, 0.18);
+      }
+
+      .project-interest-btn:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(24, 49, 36, 0.28);
+      }
+
+      .project-card {
+        position: relative;
+        overflow: hidden;
+        padding: 50px;
+        border-radius: 40px;
+        background: rgba(255,255,255,0.58);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(24,49,36,0.08);
+        transition: 0.7s ease;
+      }
+
+      .project-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top right, rgba(24,49,36,0.12), transparent 40%);
+        opacity: 0;
+        transition: 0.6s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 35px 80px rgba(0,0,0,0.08);
+      }
+
+      .project-card:hover::before {
+        opacity: 1;
+      }
+
+      .project-image {
+        border-radius: 30px;
+        position: relative;
+      }
+
+      .project-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.22), transparent);
+        opacity: 0;
+        transition: 0.6s ease;
+      }
+
+      .project-card:hover .project-image::after {
+        opacity: 1;
+      }
+
+      .hero-slide picture,
+      .hero-slide picture img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+
       /* ========================================
 GALLERY
 ======================================== */
@@ -470,6 +557,37 @@ GALLERY
       .gallery-item:hover .gallery-overlay {
         opacity: 1;
       }
+
+      
+      .gallery-buttons {
+        margin-top: 55px;
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .gallery-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 34px;
+        border: 1px solid #183124;
+        color: #183124;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 14px;
+        transition: 0.4s ease;
+        background: transparent;
+      }
+
+      .gallery-btn:hover {
+        background: #183124;
+        color: white;
+        transform: translateY(-3px);
+      }
+
 
       /* ========================================
 MESSAGE
@@ -565,6 +683,36 @@ CTA
         background: white;
         color: var(--green);
       }
+
+      
+      .hero-cta-btn,
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px 42px;
+        margin-top: 34px;
+        border: 1px solid rgba(255,255,255,0.8);
+        color: white;
+        text-decoration: none;
+        transition: all 0.45s ease;
+        font-size: 15px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(12px);
+        border-radius: 2px;
+        min-width: 320px;
+      }
+
+      .hero-cta-btn:hover,
+      .cta-btn:hover {
+        background: white;
+        color: var(--green);
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      }
+
 
       /* ========================================
 SCROLL ANIMATION
@@ -781,11 +929,23 @@ RESPONSIVE
         }
 
         .gallery-grid {
-          grid-template-columns: 1fr;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 14px;
         }
 
         .gallery-item img {
-          height: 300px;
+          height: 180px;
+        }
+
+        .gallery-buttons {
+          flex-direction: column;
+          align-items: center;
+          gap: 16px;
+        }
+
+        .gallery-btn {
+          width: 100%;
+          max-width: 320px;
         }
 
         .message-box {
@@ -880,6 +1040,7 @@ FULLSCREEN MENU
         <a href="./teams.html">Meet The Team</a>
         <a href="./contact.html">Contact Us</a>
 
+
         <a href="./expression.html" class="emh-expression-link">
           Expression Of Interest
         </a>
@@ -895,7 +1056,10 @@ HERO SLIDER
         <!-- SLIDE 1 -->
 
         <div class="hero-slide active">
-          <img src="./asset/banner 1.jpeg" />
+          <picture>
+            <source media="(max-width: 768px)" srcset="./asset/banner 1.jpeg" />
+            <img src="./asset/banner 1.jpeg" />
+          </picture>
 
           <div class="hero-overlay"></div>
 
@@ -906,13 +1070,18 @@ HERO SLIDER
               A legacy of Trust,<br />
               A vision of Art
             </p>
+
+            <a href="./expression.html" class="hero-cta-btn">Expression Of Interest</a>
           </div>
         </div>
 
         <!-- SLIDE 2 -->
 
         <div class="hero-slide">
-          <img src="./asset/bannee2.jpeg" />
+          <picture>
+            <source media="(max-width: 768px)" srcset="./asset/bannee2.jpeg" />
+            <img src="./asset/bannee2.jpeg" />
+          </picture>
 
           <div class="hero-overlay"></div>
 
@@ -923,15 +1092,20 @@ HERO SLIDER
               Crafted spaces with<br />
               timeless sophistication
             </p>
+
+            <a href="./expression.html" class="hero-cta-btn">Expression Of Interest</a>
           </div>
         </div>
 
         <!-- SLIDE 3 -->
 
         <div class="hero-slide">
-          <img
-            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2000&auto=format&fit=crop"
-          />
+          <picture>
+            <source media="(max-width: 768px)" srcset="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2000&auto=format&fit=crop" />
+            <img
+              src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2000&auto=format&fit=crop"
+            />
+          </picture>
 
           <div class="hero-overlay"></div>
 
@@ -942,6 +1116,8 @@ HERO SLIDER
               Elevated experiences<br />
               designed for generations
             </p>
+
+            <a href="./expression.html" class="hero-cta-btn">Expression Of Interest</a>
           </div>
         </div>
 
@@ -1022,7 +1198,7 @@ HERO SLIDER
             <div class="location">Bali Inspired Residence</div>
 
             <h3>Villa Poesia</h3>
-            <h6>Mansion Art Home - Where Architecture Becomes a Verse</h6>
+            <div class="project-tagline">Mansion Art Home - Where Architecture Becomes a Verse</div>
             <ul class="project-features">
               <li>Location: Moira, Goa</li>
               <li>Plot Size-1350 sq mtr</li>
@@ -1079,7 +1255,7 @@ HERO SLIDER
             <div class="location">Bali Inspired Residence</div>
 
             <h3>Apartments</h3>
-            <h6>Mansion Art Home - Where Architecture Becomes a Verse</h6>
+            <div class="project-tagline">Mansion Art Home - Where Architecture Becomes a Verse</div>
             <ul class="project-features">
               <li>Location: Arpora, Goa</li>
               <li>Type: Premium High-Rise Apartments</li>
@@ -1156,6 +1332,18 @@ HERO SLIDER
           </div>
         </div>
       </div>
+
+
+      <div class="gallery-buttons reveal">
+        <a href="./interior-design.html" class="gallery-btn">
+          Interior Designs
+        </a>
+
+        <a href="./exterior-design.html" class="gallery-btn">
+          Exterior Design
+        </a>
+      </div>
+
     </section>
 
     <!-- MESSAGE -->
@@ -1188,7 +1376,7 @@ project is balanced between art and high-stakes efficiency:
             Our homes in Goa and Kasauli are released in limited collections to ensure exclusivity and uncompromised craftsmanship. To receive early access   plans, private viewings.
           </p>
 
-          <a href="./expression.html" class="cta-btn"> Secure Your Place in the Slow Life</a>
+          <a href="./expression.html" class="cta-btn">Expression Of Interest</a>
         </div>
       </div>
     </section>
@@ -1346,20 +1534,52 @@ LIGHTBOX
       lightbox.addEventListener("click", () => {
         lightbox.classList.remove("active");
       });
-    
+        
       /* ========================================
-PROJECT PARALLAX
+ADVANCED PROJECT ANIMATION
 ======================================== */
 
-      window.addEventListener("scroll", () => {
-        const projectImages = document.querySelectorAll(".project-image img");
+      const projectCards = document.querySelectorAll(".project-card");
 
-        projectImages.forEach((img) => {
-          const speed = window.scrollY * 0.04;
+      const projectObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0px) scale(1)";
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
 
-          img.style.transform = `translateY(${speed}px) scale(1.08)`;
+      projectCards.forEach((card, index) => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(120px) scale(0.96)";
+        card.style.transition =
+          "all 1s cubic-bezier(0.16, 1, 0.3, 1)";
+        card.style.transitionDelay = `${index * 0.12}s`;
+
+        projectObserver.observe(card);
+
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const rotateY = ((x / rect.width) - 0.5) * 8;
+          const rotateX = ((y / rect.height) - 0.5) * -8;
+
+          card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform =
+            "perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0px)";
         });
       });
+
 
     </script>
   </body>
